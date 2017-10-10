@@ -24,7 +24,7 @@ $textEditorPath = "/Applications/Sublime Text.app/Contents/MacOS/Sublime Text";
 
 
 (* ::Subsection:: *)
-(*Core Aliases*)
+(*Aliases*)
 
 
 Bag = Internal`Bag;
@@ -44,9 +44,8 @@ netPlot[net_] := NeuralNetworks`LayerDepedencyGraph @ net
 netVertices[net_] := Keys@Normal[net]["Vertices"]
 
 
-
 (* ::Subsection:: *)
-(*Initialization*)
+(*Shortcuts*)
 
 
 This::usage = "This[] is a shortcut for evaluation notebook";
@@ -54,6 +53,12 @@ Backup::usage = "Backup[] creates a file.bak of the notebook in its directory.";
 EditFile::usage = "Opens file in with app specified by $textEditorPath.";
 ShowInFinder::usage = "Shows file in finder.";
 ParentDir::usage = "Returns the parent directory of a file.";
+
+
+(* ::Subsection:: *)
+(*Initialization*)
+
+
 InitEdit::usage="initOpen[] shows the file returned by InitWhere[] in the Finder.";
 InitWhere::usage="initWhere[] returns the path of you init.m file for the evaluation kernel.";
 InitPrint::usage="initPrint[] prints the contents of the file returned by InitWhere[].";
@@ -85,7 +90,6 @@ GitStatus::usage="gitStatus[] returns info on the git repository in the current 
 GitStatus[dir] returns info on the git repository located in dir.";
 
 
-
 (* ::Subsection:: *)
 (*System Additions*)
 
@@ -93,16 +97,24 @@ GitStatus[dir] returns info on the git repository located in dir.";
 NotebookBackup::usage="NotebookBackup[] creates a copy of the current notebook with vXXX appended to the filename.";
 
 FinderOpen::usage="TODO";
+ShowInFinder::usage = "TODO";
+EditFile::usage = "TODO";
 
 HumanTime::usage = "TODO";
 HumanSize::usage = "TODO";
+Size::usage = "Size[v] returns user friendly size information on a variable v.";
 
 ListView::usage="TODO";
+
 mmaFind::usage="mmaSearch[\"image_ext*\"] will find paths mma-related files matching e.g.
 \"/Applications/Mathematica.app/Contents/SystemFiles/Links/LibraryLink/LibraryResources/Source/image_external.c\"";
+
 LocalNames::usage="Prints a list of LocalSymbols";
+
 Warn::usage="Issue a warning";
+
 ToSequence::usage="Shortcut for Sequence @@ l";
+
 ToAssociation::usage="ToAssociation[f_Function, keys_List] returns <| k->f[k], ...|>
 ToAssociation[keys_List, values_List] returns <| k->v, ...|>
 ToAssociation[{keys_List, values_List] returns <| k->f[k], ...|>";
@@ -111,8 +123,6 @@ toAssn::usage = "Shortcut for ToAssociation";
 joinTo::usage = "JoinTo[var, list] sets var to Join[var, list]";
 above::usage = "above[] returns the ToExpression of the contents in the cell above the execution cell";
 aboveCell::usage = "aboveCell[] returns the fullform of the cell above the execution cell";
-Size::usage = "Size[v] returns user friendly size information on a variable v.";
-
 filterOpts::usage = "TODO";
 deleteSpace::usage = "TODO";
 deleteFailed::usage = "TODO";
@@ -121,13 +131,11 @@ EncryptPath::usage = "TODO";
 DecryptPath::usage = "TODO";
 
 
-
 (* ::Subsection:: *)
 (*Imaging *)
 
 
-cssColor::usage = "TODO";
-ToThumbnails::usage = "ToThumbnails[d1,d2,s] converts all the images in d1 to thumbnails of size s in d2."
+ToThumbnails::usage = "ToThumbnails[dir1, dir2, s] converts all the images in dir1 to thumbnails of size s in dir2."
 
 ShowBarcode::usage = "ShowBarcode[img, res] where res is the result of BarcodeRecognize[img]";
 ExportImages::usage = "ExportImages[path, imgs] exports the images to the path or zip.";
@@ -136,6 +144,7 @@ DownloadImageFileToDisk::usage = "DownloadImageFileToDisk[file, dir] saves all t
 
 AbsoluteImageDimensions::usage = "AbsoluteImageDimensions";
 
+cssColor::usage = "TODO";
 saveImages::usage = "TODO";
 features::usage = "TODO";
 showFeatures::usage = "TODO";
@@ -151,8 +160,6 @@ randomImage::usage = "randomImage[] returns an random image from ExampleData[\"T
 randomImage[w, h] returns a random image with those dimensions";
 lena::usage = "TODO";
 toURL::usage = "TODO";
-ShowInFinder::usage = "TODO";
-EditFile::usage = "TODO";
 
 
 (* ::Subsection:: *)
@@ -165,16 +172,16 @@ shellCell::usage = "TODO";
 
 
 (* ::Subsection:: *)
-(*Gui*)
+(*GUI*)
 
 
 Zoom::usage = "SelectiveZoom[graphics] creates a pane wherein click and drag zooming is enabled.";
 CaptionAbove::usage = "Execute CaptionAbove[cap] directly below the cell you want to caption with string cap.";
+
 notify::usage = "notify[title, text] creates a growl notification";
 onValueChange::usage = "don't use this";
 assnBrowser::uages = "";
 assnMenu::usage = "assnMenu[func, assn] gives a dynamic popup menu of assn's values and displays fun(chosen key).";
-
 
 
 (* ::Subsection:: *)
@@ -249,20 +256,17 @@ Train::usage="Train[data, testRatio] returns a list of measurments for easch mod
 (*List & Associations*)
 
 
-(* List Functions *)
-
-part::usage="Operator form for Part[], e.g. part[spec] @ list works"
 ToList::usage="TODO";
 DropColumn::usage="TODO";
 TakeColumn::usage="TODO";
 
+part::usage="Operator form for Part[], e.g. part[spec] @ list works"
 raggedTranspose::usage="TODO";
 dropFrom::usage="TODO";
 nSubsets::usage="TODO";
 safeTake::usage="TODO";
 
 
-(* Assn Functions *)
 safeFirst::usage="TODO";
 infoBox::usage="TODO";
 reverseAssn::usage="TODO";
@@ -276,7 +280,6 @@ valueChart::usage="Todo";
 valueTable::usage="TODO";
 
 
-(* Formatting *)
 gridPartition::usage = "TODO";
 fancy::usage = "TODO";
 percent::usage = "TODO";
@@ -285,7 +288,6 @@ prettyRule::usage = "format rules ";
 intervalFormat::usage = "TODO";
 
 
-(* Stats *)
 GrangerCausalityTest::usage = "TODO";
 table::usage = "TODO";
 bars::usage = "TODO";
@@ -297,31 +299,20 @@ histStats::usage = "TODO";
 statGrid::usage = "TODO";
 
 
-
-(* ::Subsection::Closed:: *)
+(* ::Subsection:: *)
 (*Fake Data*)
 
 
 RandomData::usage = "TODO";
 
 
-(* ::Subsection::Closed:: *)
+(* ::Subsection:: *)
 (*Writing*)
 
 
 Synonyms::usage = "TODO";
 Rhymes::usage = "TODO";
 RhymesWithXSynonymWithY::usage = "TODO";
-
-
-(* ::Subsection:: *)
-(*Authoring Tools*)
-
-
-SaveIOCellGroups::usage="TODO";
-PDFtoPNG::usage="TODO";
-OpenTool::usage="TODO";
-outline::usage="TODO";
 
 
 (* ::Section:: *)
