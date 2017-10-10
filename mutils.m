@@ -12,7 +12,7 @@
 CurrentValue[$FrontEndSession, InitializationCellWarning] = False;
 
 
-BeginPackage["MUtils`", {"GeneralUtilities`", "DatabaseLink`"}];
+BeginPackage["mutils`", {"GeneralUtilities`", "DatabaseLink`"}];
 (* Customizations *)
 
 
