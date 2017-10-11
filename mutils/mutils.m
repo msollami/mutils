@@ -1,14 +1,14 @@
 (* Mathematica Package  *)
 (* Created by IntelliJ IDEA http://wlplugin.halirutan.de/ *)
 
-(* :Title: MaTeX *)
-(* :Author: Szabolcs Horvát <szhorvat@gmail.com> *)
-(* :Context: MaTeX` *)
+(* :Title: mutils *)
+(* :Author: Michael Sollami <msollami@gmail.com> *)
+(* :Context: mutils` *)
 (* :Version: %%version%% *)
-(* :Date: 2015-03-04 *)
+(* :Date: 2017-10-10 *)
 
 (* :Mathematica Version: %%mathversion%% *)
-(* :Copyright: (c) 2017 Szabolcs Horvát *)
+(* :Copyright: (c) 2017 Michael Sollami *)
 
 
 (* Abort for old, unsupported versions of Mathematica *)
