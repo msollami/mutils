@@ -1,0 +1,7 @@
+Resources[
+    Version[1],
+    Paclet[
+        PacletFolder["mutils"],
+        FunctionPaclet[True]
+    ]
+]

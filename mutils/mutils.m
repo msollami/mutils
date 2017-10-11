@@ -1,15 +1,21 @@
-(* ::Package:: *)
+(* Mathematica Package  *)
+(* Created by IntelliJ IDEA http://wlplugin.halirutan.de/ *)
 
-(* ::Section:: *)
-(*Declarations*)
+(* :Title: MaTeX *)
+(* :Author: Szabolcs Horvát <szhorvat@gmail.com> *)
+(* :Context: MaTeX` *)
+(* :Version: %%version%% *)
+(* :Date: 2015-03-04 *)
+
+(* :Mathematica Version: %%mathversion%% *)
+(* :Copyright: (c) 2017 Szabolcs Horvát *)
 
 
-(* ::Subsection:: *)
-(*Begin[]*)
-
-
-(* Should be in init.m *)
-CurrentValue[$FrontEndSession, InitializationCellWarning] = False;
+(* Abort for old, unsupported versions of Mathematica *)
+If[$VersionNumber < 11,
+  Print["mutils requires Mathematica 11.0 or later."];
+  Abort[]
+]
 
 
 BeginPackage["mutils`", {"GeneralUtilities`", "DatabaseLink`"}];
@@ -24,7 +30,7 @@ $textEditorPath = "/Applications/Sublime Text.app/Contents/MacOS/Sublime Text";
 
 
 (* ::Subsection:: *)
-(*Aliases*)
+(*Core Aliases*)
 
 
 Bag = Internal`Bag;
@@ -44,8 +50,9 @@ netPlot[net_] := NeuralNetworks`LayerDepedencyGraph @ net
 netVertices[net_] := Keys@Normal[net]["Vertices"]
 
 
+
 (* ::Subsection:: *)
-(*Shortcuts*)
+(*Initialization*)
 
 
 This::usage = "This[] is a shortcut for evaluation notebook";
@@ -53,12 +60,6 @@ Backup::usage = "Backup[] creates a file.bak of the notebook in its directory.";
 EditFile::usage = "Opens file in with app specified by $textEditorPath.";
 ShowInFinder::usage = "Shows file in finder.";
 ParentDir::usage = "Returns the parent directory of a file.";
-
-
-(* ::Subsection:: *)
-(*Initialization*)
-
-
 InitEdit::usage="initOpen[] shows the file returned by InitWhere[] in the Finder.";
 InitWhere::usage="initWhere[] returns the path of you init.m file for the evaluation kernel.";
 InitPrint::usage="initPrint[] prints the contents of the file returned by InitWhere[].";
@@ -90,6 +91,7 @@ GitStatus::usage="gitStatus[] returns info on the git repository in the current 
 GitStatus[dir] returns info on the git repository located in dir.";
 
 
+
 (* ::Subsection:: *)
 (*System Additions*)
 
@@ -97,24 +99,16 @@ GitStatus[dir] returns info on the git repository located in dir.";
 NotebookBackup::usage="NotebookBackup[] creates a copy of the current notebook with vXXX appended to the filename.";
 
 FinderOpen::usage="TODO";
-ShowInFinder::usage = "TODO";
-EditFile::usage = "TODO";
 
 HumanTime::usage = "TODO";
 HumanSize::usage = "TODO";
-Size::usage = "Size[v] returns user friendly size information on a variable v.";
 
 ListView::usage="TODO";
-
 mmaFind::usage="mmaSearch[\"image_ext*\"] will find paths mma-related files matching e.g.
 \"/Applications/Mathematica.app/Contents/SystemFiles/Links/LibraryLink/LibraryResources/Source/image_external.c\"";
-
 LocalNames::usage="Prints a list of LocalSymbols";
-
 Warn::usage="Issue a warning";
-
 ToSequence::usage="Shortcut for Sequence @@ l";
-
 ToAssociation::usage="ToAssociation[f_Function, keys_List] returns <| k->f[k], ...|>
 ToAssociation[keys_List, values_List] returns <| k->v, ...|>
 ToAssociation[{keys_List, values_List] returns <| k->f[k], ...|>";
@@ -123,6 +117,8 @@ toAssn::usage = "Shortcut for ToAssociation";
 joinTo::usage = "JoinTo[var, list] sets var to Join[var, list]";
 above::usage = "above[] returns the ToExpression of the contents in the cell above the execution cell";
 aboveCell::usage = "aboveCell[] returns the fullform of the cell above the execution cell";
+Size::usage = "Size[v] returns user friendly size information on a variable v.";
+
 filterOpts::usage = "TODO";
 deleteSpace::usage = "TODO";
 deleteFailed::usage = "TODO";
@@ -131,11 +127,13 @@ EncryptPath::usage = "TODO";
 DecryptPath::usage = "TODO";
 
 
+
 (* ::Subsection:: *)
 (*Imaging *)
 
 
-ToThumbnails::usage = "ToThumbnails[dir1, dir2, s] converts all the images in dir1 to thumbnails of size s in dir2."
+cssColor::usage = "TODO";
+ToThumbnails::usage = "ToThumbnails[d1,d2,s] converts all the images in d1 to thumbnails of size s in d2."
 
 ShowBarcode::usage = "ShowBarcode[img, res] where res is the result of BarcodeRecognize[img]";
 ExportImages::usage = "ExportImages[path, imgs] exports the images to the path or zip.";
@@ -144,7 +142,6 @@ DownloadImageFileToDisk::usage = "DownloadImageFileToDisk[file, dir] saves all t
 
 AbsoluteImageDimensions::usage = "AbsoluteImageDimensions";
 
-cssColor::usage = "TODO";
 saveImages::usage = "TODO";
 features::usage = "TODO";
 showFeatures::usage = "TODO";
@@ -160,6 +157,8 @@ randomImage::usage = "randomImage[] returns an random image from ExampleData[\"T
 randomImage[w, h] returns a random image with those dimensions";
 lena::usage = "TODO";
 toURL::usage = "TODO";
+ShowInFinder::usage = "TODO";
+EditFile::usage = "TODO";
 
 
 (* ::Subsection:: *)
@@ -172,16 +171,16 @@ shellCell::usage = "TODO";
 
 
 (* ::Subsection:: *)
-(*GUI*)
+(*Gui*)
 
 
 Zoom::usage = "SelectiveZoom[graphics] creates a pane wherein click and drag zooming is enabled.";
 CaptionAbove::usage = "Execute CaptionAbove[cap] directly below the cell you want to caption with string cap.";
-
 notify::usage = "notify[title, text] creates a growl notification";
 onValueChange::usage = "don't use this";
 assnBrowser::uages = "";
 assnMenu::usage = "assnMenu[func, assn] gives a dynamic popup menu of assn's values and displays fun(chosen key).";
+
 
 
 (* ::Subsection:: *)
@@ -256,17 +255,20 @@ Train::usage="Train[data, testRatio] returns a list of measurments for easch mod
 (*List & Associations*)
 
 
+(* List Functions *)
+
+part::usage="Operator form for Part[], e.g. part[spec] @ list works"
 ToList::usage="TODO";
 DropColumn::usage="TODO";
 TakeColumn::usage="TODO";
 
-part::usage="Operator form for Part[], e.g. part[spec] @ list works"
 raggedTranspose::usage="TODO";
 dropFrom::usage="TODO";
 nSubsets::usage="TODO";
 safeTake::usage="TODO";
 
 
+(* Assn Functions *)
 safeFirst::usage="TODO";
 infoBox::usage="TODO";
 reverseAssn::usage="TODO";
@@ -280,6 +282,7 @@ valueChart::usage="Todo";
 valueTable::usage="TODO";
 
 
+(* Formatting *)
 gridPartition::usage = "TODO";
 fancy::usage = "TODO";
 percent::usage = "TODO";
@@ -288,6 +291,7 @@ prettyRule::usage = "format rules ";
 intervalFormat::usage = "TODO";
 
 
+(* Stats *)
 GrangerCausalityTest::usage = "TODO";
 table::usage = "TODO";
 bars::usage = "TODO";
@@ -299,20 +303,31 @@ histStats::usage = "TODO";
 statGrid::usage = "TODO";
 
 
-(* ::Subsection:: *)
+
+(* ::Subsection::Closed:: *)
 (*Fake Data*)
 
 
 RandomData::usage = "TODO";
 
 
-(* ::Subsection:: *)
+(* ::Subsection::Closed:: *)
 (*Writing*)
 
 
 Synonyms::usage = "TODO";
 Rhymes::usage = "TODO";
 RhymesWithXSynonymWithY::usage = "TODO";
+
+
+(* ::Subsection:: *)
+(*Authoring Tools*)
+
+
+SaveIOCellGroups::usage="TODO";
+PDFtoPNG::usage="TODO";
+OpenTool::usage="TODO";
+outline::usage="TODO";
 
 
 (* ::Section:: *)
@@ -1806,6 +1821,154 @@ RhymesWithXSynonymWithY[x_, y_] := Intersection[Rhymes@x, Synonyms@y]
 
 
 (* ::Subsection:: *)
+(*Authoring*)
+
+
+Clear@PDFtoPNG;
+PDFtoPNG[pathToPdf_] := Module[{cmdTemplate, basePath},
+ If[FileExtension@pathToPdf != "pdf" || FileFormat@pathToPdf != "PDF", 
+      Warn[StringJoin["Path not found: ", pathToPdf]]; 
+      Return @ $Failed];
+    basePath = DirectoryName@pathToPdf <> FileBaseName@pathToPdf;
+	cmdTemplate = "/usr/local/bin/gs -dBATCH -dNOPAUSE -sDEVICE=png16m -sOutputICCProfile=default_rgb.icc -r1000 -sOutputFile=`p`.png `p`.pdf";
+	RunProcess @ StringSplit @ StringTemplate[cmdTemplate][<|"p"->basePath|>]
+]
+
+Clear@SaveIOCellGroups;
+(*Warning: this might have to be run the the notebook itself*)
+SaveIOCellGroups[nb_, outputDir_, prefix_:"ch1", pageWidth_:550] := Module[
+	{dirName, ds, icells, files, inputCells, cell, tempPath, pdfs, pngFiles},
+	(*SelectionMove[nb,Before,CellContents];*)
+	dirName = FileNameJoin[{DirectoryName @ outputDir, FileNameTake @ outputDir}];
+
+	If[DirectoryQ @ dirName, 
+		ds = DateString[{"Hour12Short","-","MinuteShort","AMPMLowerCase","-","SecondShort","s"}];
+		dirName = CreateDirectory[outputDir<>"-"<>ds],
+		dirName = CreateDirectory[outputDir]
+	];
+		
+	inputCells=Cells[nb, CellStyle->{"Input"}];
+	files={};
+	
+	Off[ToBoxes::argt];
+	(*PrintMessage["Exporting ", Length@inputCells, " input groups as PDFs into ", dirName];*)
+	
+	Do[
+		cell = inputCells[[i]];
+		SelectionMove[cell, All, CellGroup];
+		
+		Internal`WithLocalSettings[
+			CurrentValue[$FrontEndSession,CellLabelAutoDelete]=False; (*show cell label*)
+			CurrentValue[$FrontEndSession,PrintingStyleEnvironment]="Working",
+			
+			FrontEndExecute @ ExportPacket[Notebook[{NotebookRead[EvaluationNotebook[]]},
+				ShowCellBracket->True, PageWidth->pageWidth, 
+				StyleDefinitions->Notebook[
+					{Cell[StyleData[StyleDefinitions->"Default.nb"]], 
+					Cell[StyleData["CellLabel"], FontColor->RGBColor[1,1,1], FontFamily->"Menlo", FontSize->9], 
+					Cell[StyleData["Output"], ShowCellLabel->False, FontFamily->"Source Code Pro", FontSize->12],
+					Cell[StyleData["Input"], ShowCellLabel->False, FontFamily->"Source Code Pro", FontSize->12]
+					}, 
+						FrontEndVersion->"11.1 for Mac OS X x86 (32-bit, 64-bit Kernel) (March 13, 2017)", StyleDefinitions->"PrivateStylesheetFormatting.nb"]
+				],"PDF",
+				tempPath=FileNameJoin[{dirName,StringJoin[prefix,"-cellgroup-",ToString[i],".pdf"]}];
+				AppendTo[files,tempPath];
+				tempPath]
+			,
+
+		CurrentValue[$FrontEndSession,CellLabelAutoDelete]=Inherited;
+		CurrentValue[$FrontEndSession,PrintingStyleEnvironment]=Inherited
+		],
+		
+		{i, Length @ inputCells}
+	];
+	(*PrintMessage["PDF Export finished: "];*)
+	Scan[PDFtoPNG,files];
+	(*PrintMessage["PNG Conversion finished. ", Length@files, " saved to ", dirName];*)
+	DeleteFile@files;
+	On[ToBoxes::argt];
+	pngFiles = StringDrop[#,-4]<>".png" &/@ files;
+	Scan[Export[#, ImagePad[Import[#], {{150,50},{50,40}}, White]]&, pngFiles];
+	(*PrintMessage["Cleaned PDFs"];*)
+	Beep[]
+]
+
+insertCell[type_, contents_:"\[Placeholder]"] := (SelectionMove[EvaluationNotebook[], After, Cell]; NotebookWrite[EvaluationNotebook[], Cell[contents, type]]; SelectionMove[EvaluationNotebook[], Previous, CellContents, 1]);
+
+(* Example usage: SetDock["Author", 3] *)
+Clear@SetDock;
+SetDock["Author", chapterNumber_] := With[{prefix="ch"<>ToString[chapterNumber], nb=NotebookFileName[EvaluationNotebook[]], 
+	out = FileNameJoin[{NotebookDirectory[EvaluationNotebook[]], "cells"}]},
+	buttonDock[{ActionMenu["Insert Cell", {
+		"Idea":>insertCell["Idea", "IDEA"], 
+		"Todo":>insertCell["TODO", "TODO"],  
+		"Figure":>insertCell["Idea", "FIG"], 
+		Spacer[40]->Null,
+		"Tip":>insertCell["Tip"],
+		"Quote":>insertCell["Quote"],
+		"Input":>insertCell["Input"],
+		"Code":>insertCell["Code", ""],
+		"Program":>insertCell["Program"], 
+		Spacer[40]->Null,
+		"\[Section]":>insertCell["Section"], 
+		"Sub\[Section]":>insertCell["Subsection"], 
+		"Subsub\[Section]":>insertCell["Subsubection"],
+		Spacer[40]->Null,
+		"Reference":>insertCell["Text"], 
+		"CenterText":>insertCell["CenterText"]
+	}, Method->"Queued", Appearance->"PopupMenu"],
+	ActionMenu["Outlines", { 
+		"Full TOC" :> outline[], 
+		"Chapter Summary":> outline[chapterNumber],
+		"Chapter Detailed":> outline[chapterNumber, {"Chapter", "Section", "Subsection" ,"Subsubsection", "Tip", "TODO"}]
+		}, Method -> "Queued", Appearance->"PopupMenu"],
+	backupButton[nb], 
+	ActionMenu["Publishing", {
+		"Export IO Cell Groups" :> SaveIOCellGroups[EvaluationNotebook[], out, prefix]}, 
+		Method -> "Queued", Appearance->"PopupMenu"]
+	}]
+]
+
+Clear @ OpenTool;(*Not working yet*)
+OpenTool["Author"] := DynamicModule[
+{$selectedNotebook},
+Module[{ menu=DeleteCases[Quiet[NotebookFileName/@Notebooks[]],$Failed]
+	},
+	menu=Thread[menu->FileBaseName/@menu];
+	CreatePalette[	
+	Column@{
+		PopupMenu[Dynamic@$selectedNotebook, menu],
+		Row[{backupButton[$selectedNotebook], 
+		Button["Render",Off[ToBoxes::argt];SaveIOCellGroups[$selectedNotebook, FileNameJoin[{DirectoryName[$selectedNotebook],"renders"}]],Method->"Queued"]}]
+		}
+	,Saveable->False, WindowTitle->"Authoring"
+	]
+]
+]
+
+Clear@outline;
+outline[irange__:None, types_:{"Chapter", "Section", "Subsection" ,"Subsubsection"}] := Module[{dir, chapterFiles, headers},
+	NotebookClose/@Select[Notebooks[],"Table of Contents"==CurrentValue[#,"WindowTitle"]&];
+	dir="/Users/msollami/Documents/scorpion/chapters/ch";
+	chapterFiles=StringTemplate[dir<>"`1`/Chapter `1`.nb"] /@ If[irange===None, Range[7], ToList[irange]];
+	headers=NotebookImport[#, Alternatives@@types -> "Cell"]& /@ chapterFiles;
+	CreateDocument[Flatten @ headers, WindowTitle -> "Table of Contents",
+		DockedCells -> None, Magnification -> .5, WindowSize->{400,600},
+		StyleDefinitions -> "/Users/msollami/Documents/scorpion/stylesheet/BookStylesheet.nb"
+	]
+]
+Clear@figure;
+figure[file_, desc_:"", res_:400] := CellPrint[Cell[RawBoxes@ToBoxes@ImageResize[Import[NotebookDirectory[]<>"/figures/"<>file], res],"Figure", CellFrameLabels->{{None, None},{StyleBox[RowBox[{"Figure ", CounterBox["Section"], ".", CounterBox["Subsection"], ".", CounterBox["Figure"], " [",file,"]  ", StyleBox[desc, FontSlant->"Italic"]}],FontSize -> 16], None}}]]
+
+
+(*UpdateMasterStyle[] := CopyFile[NotebookFileName[EvaluationNotebook[]],"/Users/msollami/Documents/scorpion/stylesheet/BookStylesheet.nb"]*)
+
+
+(* ::InheritFromParent:: *)
+(*\[Placeholder]*)
+
+
+(* ::Subsection:: *)
 (*End[]*)
 
 
@@ -1817,5 +1980,6 @@ KFN[list_, k_Integer?Positive] := Module[{kTuples},
 ]
 
 
-End[]
-EndPackage[]
+End[]; (* End Private Context *)
+
+EndPackage[];

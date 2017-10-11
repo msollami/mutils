@@ -1,0 +1,1283 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     52035,       1275]
+NotebookOptionsPosition[     43343,       1125]
+NotebookOutlinePosition[     43917,       1147]
+CellTagsIndexPosition[     43829,       1142]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{"Quit", "[", "]"}]], "Input",
+ CellChangeTimes->{{3.716667228328454*^9, 
+  3.716667229184257*^9}},ExpressionUUID->"a5b9288e-2ab3-49b0-810d-\
+962e6b8680fc"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"<<", "mutils`"}]], "Input",
+ CellChangeTimes->{{3.716670483261682*^9, 3.716670485566877*^9}, {
+   3.7166705681923313`*^9, 3.716670569903676*^9}, 3.716670705946643*^9, 
+   3.716670738017531*^9},ExpressionUUID->"3e4a6567-696b-408b-9414-\
+5ceb4c7394cc"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "Get","noopen",
+   "\"Cannot open \\!\\(\\*RowBox[{\\\"\\\\\\\"mutils`\\\\\\\"\\\"}]\\).\"",2,
+   1,1,32583588579188664149,"Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{
+  3.7166709760288773`*^9},ExpressionUUID->"4bf05122-53a7-46ae-a44a-\
+11ff5f87d20f"],
+
+Cell[BoxData["$Failed"], "Output",
+ CellChangeTimes->{
+  3.716670976035733*^9},ExpressionUUID->"40cda8bd-b00e-444f-9852-\
+65dc8d65a1b8"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Names", "[", "\"\<mutils`*\>\"", "]"}]], "Input",
+ CellChangeTimes->{{3.716670483261682*^9, 3.716670485566877*^9}, {
+   3.7166705681923313`*^9, 3.716670569903676*^9}, 
+   3.716670705946643*^9},ExpressionUUID->"bdbe88e0-3c53-4ac2-a359-\
+e948cfb854ee"],
+
+Cell[BoxData[
+ RowBox[{"{", "}"}]], "Output",
+ CellChangeTimes->{3.71667091731551*^9, 
+  3.7166709792509108`*^9},ExpressionUUID->"c0fda0f2-104a-4cf0-a4e9-\
+4f596758a88c"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"PacletDirectoryRemove", "[", 
+  "\"\</Users/msollami/repos/mutils/mutils\>\"", "]"}]], "Input",
+ CellChangeTimes->{{3.7166705167845488`*^9, 3.716670550135469*^9}, {
+   3.716670598415077*^9, 3.716670601014617*^9}, {3.716670712370638*^9, 
+   3.716670713690434*^9}, {3.71667074989749*^9, 3.716670750345132*^9}, 
+   3.7166709550138283`*^9},ExpressionUUID->"d11ce702-234f-4e8c-bd0d-\
+0b5595392289"],
+
+Cell[BoxData[
+ RowBox[{"{", "}"}]], "Output",
+ CellChangeTimes->{
+  3.716670955896703*^9},ExpressionUUID->"6417b663-736c-4bf4-a258-\
+ed72aaf0a108"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"PacletInformation", "[", "\"\<mutils\>\"", "]"}]], "Input",
+ CellChangeTimes->{{3.716670527424192*^9, 
+  3.716670533063692*^9}},ExpressionUUID->"bdea98f0-3da4-43db-8b68-\
+dbe21264360b"],
+
+Cell[BoxData[
+ RowBox[{"{", "}"}]], "Output",
+ CellChangeTimes->{{3.716670533323391*^9, 3.716670539086947*^9}, {
+   3.7166705900439034`*^9, 3.716670602342308*^9}, 3.7166707160653048`*^9, 
+   3.716670751923826*^9, {3.71667094796661*^9, 
+   3.716670956885841*^9}},ExpressionUUID->"e8470284-801a-46e5-88e2-\
+75b700bbbc41"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"PacletFind", "@", "\"\<mutils\>\""}]], "Input",ExpressionUUID->"fefcc958-80fb-40fa-9a75-8df815b28269"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  InterpretationBox[
+   RowBox[{
+   "Paclet", "[", "\<\"mutils\"\>", ",", "\<\"0.0.1\"\>", ",", "<>", "]"}],
+   PacletManager`Paclet[
+   "Name" -> "mutils", "Version" -> "0.0.1", "MathematicaVersion" -> "11.0+", 
+    "Description" -> "Create LaTeX-typeset labels within Mathematica.", 
+    "Creator" -> "Michael Sollami", "Thumbnail" -> "Logo.png", "URL" -> 
+    "https://github.com/msollami/mutils", 
+    "Extensions" -> {{
+      "Documentation", "MainPage" -> "Guides/mutils", "Language" -> All}, {
+      "Kernel", "Root" -> ".", "Context" -> "mutils`"}}, "Location" -> 
+    "/Users/msollami/repos/mutils/mutils"]], "}"}]], "Output",
+ CellChangeTimes->{{3.716669478290313*^9, 3.71666949847652*^9}, 
+   3.716669987797632*^9},ExpressionUUID->"17c1862a-8528-46f7-b6fd-\
+9d51960a7bc7"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"PacletUninstall", "/@", 
+  RowBox[{"(", 
+   RowBox[{"PacletFind", "@", "\"\<mutils\>\""}], ")"}]}]], "Input",
+ CellChangeTimes->{{3.7166583125439587`*^9, 3.716658319968919*^9}, {
+  3.716665867378214*^9, 3.716665869799979*^9}, {3.716668259986356*^9, 
+  3.716668261026392*^9}, {3.716669443574123*^9, 
+  3.716669449243825*^9}},ExpressionUUID->"7d9aea47-28e3-4a4a-a8da-\
+42ef481714b6"],
+
+Cell[BoxData[
+ RowBox[{"{", "}"}]], "Output",
+ CellChangeTimes->{
+  3.716669475464252*^9, {3.716669988864442*^9, 
+   3.716669991745116*^9}},ExpressionUUID->"0f88ba94-9400-4af7-8df3-\
+4f76d5eda92e"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"PacletDirectoryRemove", "@", 
+  "\"\</Users/msollami/repos/mutils/mutils\>\""}]], "Input",
+ CellChangeTimes->{{3.7166694305096617`*^9, 3.716669432586091*^9}, {
+  3.716669469006974*^9, 
+  3.716669470918241*^9}},ExpressionUUID->"6d7315fc-0fa4-4184-a6b8-\
+a924643585f6"],
+
+Cell[BoxData[
+ RowBox[{"{", "}"}]], "Output",
+ CellChangeTimes->{{3.716669433398918*^9, 3.716669471355847*^9}, 
+   3.716669990079933*^9},ExpressionUUID->"0a780028-485a-4e50-bfca-\
+e1cad5d70f3e"]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"PacletUninstall", "@", "\"\<mutils\>\""}]], "Input",
+ CellChangeTimes->{{3.716669381859734*^9, 
+  3.716669384285756*^9}},ExpressionUUID->"65598cb0-ec68-418c-b05c-\
+62ea6f9a29d0"],
+
+Cell[CellGroupData[{
+
+Cell["post", "Section",
+ CellChangeTimes->{{3.716666505957849*^9, 
+  3.716666506507803*^9}},ExpressionUUID->"097acd78-885f-459c-8aeb-\
+6e2eaf1cbe5f"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"SetDirectory", "[", "\"\<~/repos/mutils\>\"", "]"}]], "Input",
+ CellChangeTimes->{{3.716665877760892*^9, 3.716665893150921*^9}, {
+  3.716665974909622*^9, 3.716665975701119*^9}, {3.716668271416666*^9, 
+  3.716668272353032*^9}},ExpressionUUID->"28ca7934-ea1f-4af7-8f0f-\
+e66c2d365fa7"],
+
+Cell[BoxData["\<\"/Users/msollami/repos/mutils\"\>"], "Output",
+ CellChangeTimes->{
+  3.716665893728343*^9, 3.7166659762612867`*^9, {3.7166673949519787`*^9, 
+   3.716667417850562*^9}, 3.716668273295884*^9, 3.716668610535923*^9, 
+   3.7166687361343403`*^9, 3.716669067891995*^9, {3.716669480611897*^9, 
+   3.71666949856404*^9}, 3.716669572148635*^9, 3.716669997288151*^9, 
+   3.716671001386303*^9},ExpressionUUID->"b6c590bd-7cd6-47ba-b83a-\
+46600169b815"]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"<<", "PacletManager`"}]], "Input",
+ CellChangeTimes->{{3.7166583068176813`*^9, 
+  3.716658311576261*^9}},ExpressionUUID->"bb77249c-8256-4662-88e9-\
+de59a963896f"],
+
+Cell[BoxData[
+ RowBox[{"Get", "@", 
+  "\"\<~/repos/PackageTools/PackageTools/PackageTools.m\>\""}]], "Input",
+ CellChangeTimes->{{3.716666551769553*^9, 
+  3.716666580410824*^9}},ExpressionUUID->"1d0a7cf4-c1ec-4076-aa9b-\
+80b2ab9406fb"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{"Mathematica", " ", "Source", " ", "File"}], "  ", "*)"}], "\n", 
+  RowBox[{"(*", " ", 
+   RowBox[{
+   "Created", " ", "by", " ", "Mathematica", " ", "Plugin", " ", "for", " ", 
+    "IntelliJ", " ", "IDEA"}], " ", "*)"}], "\n", 
+  RowBox[{"(*", " ", 
+   RowBox[{":", "Author", ":", " ", "szhorvat"}], " ", "*)"}], "\n", 
+  RowBox[{"(*", " ", 
+   RowBox[{":", "Date", ":", " ", 
+    RowBox[{"2016", "-", "11", "-", "28"}]}], " ", "*)"}], "\n", "\n", 
+  RowBox[{"(*", " ", 
+   RowBox[{
+    RowBox[{
+    "Run", " ", "this", " ", "script", " ", "optionally", " ", "for", " ", 
+     "minor", " ", "improvements", " ", "to", " ", "the", " ", "built", " ", 
+     RowBox[{"documentation", ".", "\n", "   ", "Requires"}], " ", 
+     "PackageTools"}], ",", " ", 
+    RowBox[{
+     RowBox[{"https", ":"}], "//", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"github", ".", "com"}], "/", "szhorvat"}], "/", 
+      "PackageTools"}]}]}], "\n", "*)"}], "\n", "\n", 
+  RowBox[{"(*", 
+   RowBox[{"AddPath", "[", "\"\<PackageTools\>\"", "]"}], "*)"}], "\n", 
+  RowBox[{"(*", 
+   RowBox[{"Needs", "[", "\"\<PackageTools`\>\"", "]"}], "*)"}], "\n", "\n", 
+  RowBox[{"(*", 
+   RowBox[{"SetDirectory", "@", 
+    RowBox[{"DirectoryName", "[", "$InputFileName", "]"}]}], "*)"}], "\n", 
+  RowBox[{
+   RowBox[{"SetDirectory", "[", "\"\<~/repos/mutils\>\"", "]"}], "\n", "\n", 
+   RowBox[{
+    RowBox[{"$appName", " ", "=", " ", "\"\<mutils\>\""}], ";"}], "\n", 
+   RowBox[{"(*", 
+    RowBox[{
+     RowBox[{
+     "manually", " ", "changed", " ", "$appName", " ", "in", " ", "the", " ", 
+      "finder", " ", "from", " ", 
+      RowBox[{"build", "/", "mutils"}]}], "-", 
+     RowBox[{"0.0", ".1", " ", "to", " ", 
+      RowBox[{"build", "/", "mutils"}]}]}], "*)"}], "\n", 
+   RowBox[{
+    RowBox[{"$docDir", " ", "=", " ", 
+     RowBox[{"FileNameJoin", "[", 
+      RowBox[{"{", 
+       RowBox[{
+       "\"\<build\>\"", ",", " ", "$appName", ",", " ", 
+        "\"\<Documentation\>\""}], "}"}], "]"}]}], ";"}], "\n", "\n", 
+   RowBox[{"If", "[", 
+    RowBox[{
+     RowBox[{"Not", "@", 
+      RowBox[{"DirectoryQ", "[", "$docDir", "]"}]}], ",", "\n", "  ", 
+     RowBox[{
+      RowBox[{
+      "Print", "[", "\"\<Documentation directory not found.  Aborting.\>\"", 
+       "]"}], ";", "\n", "  ", 
+      RowBox[{"Abort", "[", "]"}]}]}], "\n", "]"}]}]}]], "Code",
+ CellChangeTimes->{{3.71666651661375*^9, 3.7166665350470667`*^9}, 
+   3.716666588948118*^9, {3.716668284089469*^9, 3.716668287075432*^9}, {
+   3.716668414069672*^9, 3.7166684160691433`*^9}, {3.716668627183099*^9, 
+   3.716668627933408*^9}, {3.716668692684231*^9, 3.716668693451647*^9}, {
+   3.7166687550446587`*^9, 
+   3.716668782898841*^9}},ExpressionUUID->"82ef0013-2588-4cd2-a617-\
+2bc3688bc980"],
+
+Cell[BoxData["\<\"/Users/msollami/repos/mutils\"\>"], "Output",
+ CellChangeTimes->{
+  3.716668416472995*^9, {3.7166686071270227`*^9, 3.716668632701952*^9}, 
+   3.716668737761547*^9, 3.71666881941151*^9, 3.716669069982114*^9, 
+   3.7166693848879547`*^9, {3.71666949175251*^9, 3.716669574647706*^9}, 
+   3.71666960644799*^9, {3.7166699997425003`*^9, 3.716670015131878*^9}, {
+   3.71667090487744*^9, 3.716670910735258*^9}, 
+   3.716671005913104*^9},ExpressionUUID->"db0f9760-4e1e-4cd9-9356-\
+3b13a6a8d290"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"code", " ", "=", "\n", "    ", 
+    RowBox[{"With", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"$docDir", " ", "=", " ", "$docDir"}], ",", " ", 
+        RowBox[{"$appName", " ", "=", " ", "$appName"}]}], "}"}], ",", "\n", 
+      "      ", 
+      RowBox[{"MCode", "[", "\n", "        ", 
+       RowBox[{
+        RowBox[{"echo", " ", "=", " ", 
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"Print", "[", "#", "]"}], ";", "#"}], ")"}], "&"}]}], ";",
+         "\n", "        ", 
+        RowBox[{
+         RowBox[{"FileNames", "[", 
+          RowBox[{"\"\<*.nb\>\"", ",", " ", "$docDir", ",", " ", "Infinity"}],
+           "]"}], " ", "//", "\n", "          ", 
+         RowBox[{"Scan", "[", "\n", "            ", 
+          RowBox[{"echo", " ", "/*", "\n", "            ", 
+           RowBox[{"RewriteNotebook", "[", "\n", "              ", 
+            RowBox[{
+            "NBHideInput", " ", "/*", "\n", "              ", "NBRemoveURL", 
+             " ", "/*", "\n", "              ", 
+             RowBox[{"NBDeleteCellTags", "[", "\"\<HideInput\>\"", "]"}], " ",
+              "/*", "\n", "              ", 
+             RowBox[{"NBSetOptions", "[", 
+              RowBox[{"Saveable", " ", "->", " ", "False"}], "]"}], " ", "/*",
+              "\n", "              ", "NBRemoveChangeTimes", " ", "/*", "\n", 
+             "              ", "NBResetWindow", " ", "/*", "\n", 
+             "              ", 
+             RowBox[{"Function", "[", 
+              RowBox[{"nb", ",", "\n", "                ", 
+               RowBox[{"Replace", "[", 
+                RowBox[{"nb", ",", " ", 
+                 RowBox[{
+                  RowBox[{"sd", " ", ":", " ", 
+                   RowBox[{"HoldPattern", "[", 
+                    RowBox[{"StyleDefinitions", " ", "->", " ", 
+                    RowBox[{"Except", "[", "_Notebook", "]"}]}], "]"}]}], " ",
+                   "->", "\n", "                    ", 
+                  RowBox[{"StyleDefinitions", " ", "->", " ", 
+                   RowBox[{"Notebook", "[", 
+                    RowBox[{"{", 
+                    RowBox[{"Cell", "@", 
+                    RowBox[{"StyleData", "[", "sd", "]"}]}], "}"}], "]"}]}]}],
+                  ",", "\n", "                  ", 
+                 RowBox[{"{", "1", "}"}]}], "\n", "                ", "]"}]}],
+               "\n", "              ", "]"}], " ", "/*", "\n", 
+             "              ", 
+             RowBox[{"Function", "[", 
+              RowBox[{"nb", ",", "\n", "                ", 
+               RowBox[{"Replace", "[", 
+                RowBox[{"nb", ",", "\n", "                  ", 
+                 RowBox[{
+                  RowBox[{"HoldPattern", "[", 
+                   RowBox[{"StyleDefinitions", " ", "->", " ", 
+                    RowBox[{"Notebook", "[", 
+                    RowBox[{
+                    RowBox[{"{", "cells___", "}"}], ",", " ", "rest___"}], 
+                    "]"}]}], "]"}], " ", "->", "\n", "                    ", 
+                  RowBox[{"(", 
+                   RowBox[{"StyleDefinitions", " ", "->", " ", 
+                    RowBox[{"Notebook", "[", "\n", "                      ", 
+                    RowBox[{
+                    RowBox[{"{", "\n", "                      ", 
+                    RowBox[{"cells", ",", "\n", "                      ", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"Cell", "[", 
+                    RowBox[{
+                    RowBox[{"StyleData", "[", "#", "]"}], ",", " ", 
+                    RowBox[{"ShowGroupOpener", " ", "->", " ", "True"}]}], 
+                    "]"}], "&"}], " ", "/@", " ", 
+                    RowBox[{"Unevaluated", "@", 
+                    RowBox[{"Sequence", "[", 
+                    RowBox[{
+                    "\"\<NotesSection\>\"", ",", " ", 
+                    "\"\<PrimaryExamplesSection\>\"", ",", " ", 
+                    "\"\<ExampleSection\>\"", ",", " ", 
+                    "\"\<ExampleSubsection\>\""}], "]"}]}]}], ",", "\n", 
+                    "                      ", 
+                    RowBox[{"Cell", "[", 
+                    RowBox[{"StyleData", "[", 
+                    RowBox[{"\"\<GuideTutorialsSection\>\"", ",", " ", 
+                    RowBox[{"StyleDefinitions", " ", "->", " ", 
+                    RowBox[{
+                    "StyleData", "[", "\"\<SeeAlsoSection\>\"", "]"}]}]}], 
+                    "]"}], "]"}]}], "\n", "                      ", "}"}], 
+                    ",", " ", "rest"}], "]"}]}], ")"}]}], ",", "\n", 
+                 "                  ", 
+                 RowBox[{"{", "1", "}"}]}], "\n", "                ", "]"}]}],
+               "\n", "              ", "]"}], " ", "/*", "\n", 
+             "              ", 
+             RowBox[{"Function", "[", 
+              RowBox[{"nb", ",", "\n", "                ", 
+               RowBox[{"Replace", "[", 
+                RowBox[{"nb", ",", "\n", "                  ", 
+                 RowBox[{
+                  RowBox[{"(", 
+                   RowBox[{"BaseStyle", "->", 
+                    RowBox[{"{", 
+                    RowBox[{"\"\<InlineFormula\>\"", ",", " ", 
+                    RowBox[{
+                    "FontFamily", " ", "->", " ", "\"\<Verdana\>\""}]}], 
+                    "}"}]}], ")"}], " ", "->", "\n", "                      ", 
+                  RowBox[{"(", 
+                   RowBox[{"BaseStyle", " ", "->", " ", 
+                    RowBox[{
+                    "FEPrivate`If", "[", "\n", "                        ", 
+                    RowBox[{
+                    RowBox[{"FEPrivate`Less", "[", " ", 
+                    RowBox[{"FEPrivate`$VersionNumber", ",", " ", "11.1"}], 
+                    "]"}], ",", "\n", "                        ", 
+                    RowBox[{"{", 
+                    RowBox[{"\"\<InlineFormula\>\"", ",", " ", 
+                    RowBox[{
+                    "FontFamily", " ", "->", " ", "\"\<Verdana\>\""}]}], 
+                    "}"}], ",", "\n", "                        ", 
+                    RowBox[{"{", "\"\<InlineFormula\>\"", "}"}]}], "\n", 
+                    "                      ", "]"}]}], ")"}]}], ",", "\n", 
+                 "                  ", "Infinity"}], "\n", "                ",
+                 "]"}]}], "\n", "              ", "]"}]}], "\n", 
+            "            ", "]"}]}], "\n", "          ", "]"}]}]}], "\n", 
+       "      ", "]"}]}], "\n", "    ", "]"}]}], ";"}], "\n", "\n", 
+  RowBox[{"(*", " ", 
+   RowBox[{
+   "Process", " ", "in", " ", "version", " ", "10.0", " ", "to", " ", "avoid",
+     " ", "InsufficientVersionWarning"}], " ", "*)"}]}], "\n", 
+ RowBox[{"MRun", "[", 
+  RowBox[{"code", ",", " ", "\"\<11.2\>\""}], "]"}]}], "Code",
+ CellChangeTimes->{{3.71666651661375*^9, 3.7166665350470667`*^9}, 
+   3.716666588948118*^9},ExpressionUUID->"c42b354e-9157-445c-b227-\
+c0cac5907e99"],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+build/mutils/Documentation/English/Guides/mutils.nb
+\
+\>", "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{
+  3.716671010743136*^9},ExpressionUUID->"4d2244eb-555b-49e4-bc83-\
+9edfee09da77"],
+
+Cell["\<\
+build/mutils/Documentation/English/License/MIT.nb
+\
+\>", "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{
+  3.716671012794485*^9},ExpressionUUID->"306a7227-41ab-4c8d-9b32-\
+2c63a63ef114"],
+
+Cell["\<\
+build/mutils/Documentation/English/ReferencePages/Messages/MaTeX/gserr.nb
+\
+\>", "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{
+  3.716671012973781*^9},ExpressionUUID->"11fea7f9-339d-485a-ba3c-\
+5c8f97f6334f"],
+
+Cell["\<\
+build/mutils/Documentation/English/ReferencePages/Messages/MaTeX/invopt.nb
+\
+\>", "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{
+  3.716671013192705*^9},ExpressionUUID->"0ac3b4da-6659-415d-9539-\
+045c9040151c"],
+
+Cell["\<\
+build/mutils/Documentation/English/ReferencePages/Messages/MaTeX/nopdf.nb
+\
+\>", "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{
+  3.716671013430099*^9},ExpressionUUID->"f990e2be-0775-4c56-ad7f-\
+35dc76213de0"],
+
+Cell["\<\
+build/mutils/Documentation/English/ReferencePages/Messages/MaTeX/stderr.nb
+\
+\>", "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{
+  3.716671013654129*^9},ExpressionUUID->"4ff79b2a-ca87-4baf-9f3c-\
+9e64e2d2e583"],
+
+Cell["\<\
+build/mutils/Documentation/English/ReferencePages/Messages/MaTeX/texerr.nb
+\
+\>", "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{
+  3.7166710138713818`*^9},ExpressionUUID->"1df3535a-1071-4e79-bc56-\
+be9c2c32277d"],
+
+Cell["\<\
+build/mutils/Documentation/English/ReferencePages/Symbols/iMap.nb
+\
+\>", "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{
+  3.716671014125114*^9},ExpressionUUID->"9cb1997d-1670-40e6-a1d5-\
+4e13041509fa"]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"HoldComplete", "[", "Null", "]"}]], "Output",
+ CellChangeTimes->{
+  3.716667444192624*^9, {3.716668427599972*^9, 3.7166684381641283`*^9}, 
+   3.716668623890058*^9, 3.716668750889439*^9, 3.716668819691658*^9, 
+   3.716669083663714*^9, 3.716669385114485*^9, {3.71666949199107*^9, 
+   3.7166695481727133`*^9}, {3.716669583867228*^9, 3.716669618262989*^9}, {
+   3.716670005029936*^9, 3.716670020992717*^9}, {3.716670905183783*^9, 
+   3.716670910901766*^9}, 
+   3.716671014326089*^9},ExpressionUUID->"90576ec7-b0d4-4349-a827-\
+847093d8585b"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["build", "Section",
+ CellChangeTimes->{{3.716666505957849*^9, 3.716666506507803*^9}, {
+  3.7166666379443703`*^9, 
+  3.716666641280919*^9}},ExpressionUUID->"75f64dd6-34c3-4794-bb9c-\
+06d0bde30052"],
+
+Cell[BoxData[
+ RowBox[{"Quit", "[", "]"}]], "Input",
+ CellChangeTimes->{{3.716668521181282*^9, 
+  3.71666852210096*^9}},ExpressionUUID->"27533e3b-7553-4905-9b14-\
+190f7c7fed7a"],
+
+Cell[BoxData[
+ RowBox[{"<<", "PacletManager`"}]], "Input",
+ CellChangeTimes->{{3.7166583068176813`*^9, 
+  3.716658311576261*^9}},ExpressionUUID->"026bf3b4-7c8c-49c0-96df-\
+9c29c61289c8"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"SetDirectory", "[", "\"\<~/repos/mutils\>\"", "]"}]], "Input",
+ CellChangeTimes->{{3.716665877760892*^9, 3.716665893150921*^9}, {
+  3.716665974909622*^9, 3.716665975701119*^9}, {3.716668271416666*^9, 
+  3.716668272353032*^9}},ExpressionUUID->"10245d57-f58b-4897-b1b8-\
+05806560c49d"],
+
+Cell[BoxData["\<\"/Users/msollami/repos/mutils\"\>"], "Output",
+ CellChangeTimes->{
+  3.716665893728343*^9, 3.7166659762612867`*^9, {3.7166673949519787`*^9, 
+   3.716667417850562*^9}, 3.716668273295884*^9, 3.716668538655286*^9, 
+   3.716668580435258*^9, 3.716668791822706*^9, 3.716668918215734*^9, 
+   3.7166690882995768`*^9, 3.716669165177618*^9, 3.716669631530179*^9, 
+   3.716670039565727*^9, 3.7166710343736563`*^9, 
+   3.7166782260045567`*^9},ExpressionUUID->"5353c1c8-79ac-41ad-9b84-\
+45c3c56bfc86"]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"Get", "@", 
+  "\"\<~/repos/PackageTools/PackageTools/PackageTools.m\>\""}]], "Input",
+ CellChangeTimes->{{3.716666551769553*^9, 
+  3.716666580410824*^9}},ExpressionUUID->"a226e9c3-1d34-409d-85a8-\
+576a29cdd84e"],
+
+Cell[BoxData[
+ RowBox[{"<<", "DocumentationSearch`"}]], "Input",
+ CellChangeTimes->{{3.716667040284693*^9, 3.716667042420105*^9}, {
+  3.716668484391189*^9, 
+  3.716668485110302*^9}},ExpressionUUID->"26130984-562a-4a67-86f7-\
+5b6c2b31760a"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"$appName", " ", "=", " ", "\"\<mutils\>\""}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"printAbort", "[", "str_", "]"}], " ", ":=", " ", 
+  RowBox[{"(", 
+   RowBox[{
+    RowBox[{"Print", "[", 
+     RowBox[{"\"\<ABORTING: \>\"", ",", " ", 
+      RowBox[{"Style", "[", 
+       RowBox[{"str", ",", " ", "Red", ",", " ", "Bold"}], "]"}]}], "]"}], 
+    ";", " ", 
+    RowBox[{"Quit", "[", "]"}]}], ")"}]}], "\n", 
+ RowBox[{"If", "[", 
+  RowBox[{
+   RowBox[{"$VersionNumber", " ", "<", " ", "10.0"}], ",", " ", 
+   RowBox[{
+   "printAbort", "[", "\"\<Mathematica 10.0 or later required.\>\"", "]"}]}], 
+  "]"}]}], "Code",
+ CellChangeTimes->{{3.716666670695592*^9, 3.716666693926588*^9}, {
+   3.71666849339268*^9, 3.716668510926373*^9}, 
+   3.716668837942223*^9},ExpressionUUID->"defa9bf2-b81c-4af5-92fe-\
+5a8fab24dbc4"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"$dir", " ", "=", "\n", "    ", 
+   RowBox[{"Which", "[", "\n", "      ", 
+    RowBox[{
+     RowBox[{"$InputFileName", " ", "=!=", " ", "\"\<\>\""}], ",", " ", 
+     RowBox[{"DirectoryName", "[", "$InputFileName", "]"}], ",", "\n", 
+     "      ", "$Notebooks", ",", " ", 
+     RowBox[{"NotebookDirectory", "[", "]"}], ",", "\n", "      ", "True", 
+     ",", " ", 
+     RowBox[{
+     "printAbort", "[", "\"\<Cannot determine script directory.\>\"", "]"}]}],
+     "\n", "    ", "]"}]}], ";"}], "\n", 
+ RowBox[{"SetDirectory", "[", "$dir", "]"}]}], "Code",
+ CellChangeTimes->{{3.716666670695592*^9, 3.716666693926588*^9}, {
+  3.71666849339268*^9, 3.716668510926373*^9}, {3.716668837942223*^9, 
+  3.7166688429180307`*^9}},ExpressionUUID->"64bf9fdf-290b-4b14-b01f-\
+e6c39fab3a21"],
+
+Cell[BoxData["\<\"/Users/msollami/repos/mutils\"\>"], "Output",
+ CellChangeTimes->{
+  3.71666884359968*^9, 3.716668893021059*^9, 3.716668927422337*^9, 
+   3.716669093040064*^9, 3.716669171369245*^9, 3.716669385190526*^9, 
+   3.716669492071707*^9, {3.71666953675977*^9, 3.716669548277261*^9}, 
+   3.716669639005184*^9, 3.71667004253239*^9, {3.7166709052665987`*^9, 
+   3.71667091098393*^9}, 3.716671037891798*^9, 
+   3.716678230354504*^9},ExpressionUUID->"d43b8864-7033-4da9-8203-\
+5184cdb6c2f1"]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"If", "[", 
+  RowBox[{
+   RowBox[{"Not", "@", 
+    RowBox[{"DirectoryQ", "[", "$appName", "]"}]}], ",", " ", 
+   RowBox[{
+   "printAbort", "[", "\"\<Application directory not found.\>\"", "]"}]}], 
+  "]"}]], "Code",
+ CellChangeTimes->{{3.716666670695592*^9, 3.716666693926588*^9}, {
+  3.71666849339268*^9, 3.716668510926373*^9}, {3.716668837942223*^9, 
+  3.7166688429180307`*^9}},ExpressionUUID->"f760f3b3-78ab-4b6c-8bc5-\
+f1228d4d2699"],
+
+Cell[BoxData[
+ RowBox[{"Check", "[", "\n", "  ", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"PacletDirectoryAdd", "[", "$appName", "]"}], ";", "\n", "  ", 
+    RowBox[{"Needs", "[", 
+     RowBox[{"$appName", " ", "<>", " ", "\"\<`\>\""}], "]"}]}], ",", "\n", 
+   "  ", 
+   RowBox[{
+   "Print", "[", "\"\<Cannot add paclet directory and load package.\>\"", 
+    "]"}]}], "\n", "]"}]], "Code",
+ CellChangeTimes->{{3.716666670695592*^9, 3.716666693926588*^9}, 
+   3.716668860974515*^9, 3.716668906484288*^9, {3.716669102973976*^9, 
+   3.716669106621086*^9}},ExpressionUUID->"148ad531-08f8-4f01-a366-\
+2e6495c61731"],
+
+Cell[BoxData[
+ RowBox[{"If", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"AbsoluteFileName", "[", "$appName", "]"}], " ", "=!=", " ", 
+    RowBox[{"Lookup", "[", 
+     RowBox[{
+      RowBox[{"PacletInformation", "[", "$appName", "]"}], ",", " ", 
+      "\"\<Location\>\""}], "]"}]}], ",", "\n", "  ", 
+   RowBox[{"Print", "[", "\"\<Wrong paclet loaded.\>\"", "]"}]}], "\n", 
+  "]"}]], "Code",
+ CellChangeTimes->{{3.716666670695592*^9, 3.716666693926588*^9}, 
+   3.716668860974515*^9, {3.7166691788891363`*^9, 
+   3.716669181216707*^9}},ExpressionUUID->"bbb310ed-d27e-4273-900d-\
+3e6c5fac2c6e"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"date", " ", "=", " ", 
+   RowBox[{"DateString", "[", 
+    RowBox[{"{", 
+     RowBox[{
+     "\"\<Year\>\"", ",", " ", "\"\<Month\>\"", ",", " ", "\"\<Day\>\""}], 
+     "}"}], "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"time", " ", "=", " ", 
+   RowBox[{"DateString", "[", 
+    RowBox[{"{", 
+     RowBox[{
+     "\"\<Hour24\>\"", ",", " ", "\"\<Minute\>\"", ",", " ", 
+      "\"\<Second\>\""}], "}"}], "]"}]}], ";"}], "\n", 
+ RowBox[{"$buildDir", " ", "=", " ", 
+  RowBox[{
+   RowBox[{"StringTemplate", "[", "\"\<``-``-``\>\"", "]"}], "[", 
+   RowBox[{"$appName", ",", " ", "date", ",", " ", "time"}], "]"}]}]}], "Code",\
+
+ CellChangeTimes->{{3.716666670695592*^9, 
+  3.7166666898715057`*^9}},ExpressionUUID->"8145ccab-322f-492d-bbae-\
+708a339366d0"],
+
+Cell[BoxData["\<\"mutils-20171010-223716\"\>"], "Output",
+ CellChangeTimes->{
+  3.716666718382703*^9, 3.7166669133529863`*^9, 3.716666943470319*^9, 
+   3.716667236226342*^9, 3.716667455419773*^9, 3.7166689341590776`*^9, 
+   3.716669121750695*^9, 3.7166691744167128`*^9, 3.716669385504901*^9, 
+   3.716669492288344*^9, {3.7166695369973783`*^9, 3.716669548464135*^9}, 
+   3.7166696439254827`*^9, 3.716670046609641*^9, {3.7166709055462103`*^9, 
+   3.71667091127773*^9}, 3.716671041755314*^9, 
+   3.7166782370135517`*^9},ExpressionUUID->"08a4e7dd-e209-48c9-a8ca-\
+b3688037abec"]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"If", "[", 
+  RowBox[{
+   RowBox[{"DirectoryQ", "[", "$buildDir", "]"}], ",", " ", 
+   RowBox[{"Print", "[", "\"\<Build directory already exists.\>\"", "]"}]}], 
+  " ", "]"}]], "Code",
+ CellChangeTimes->{{3.716666670695592*^9, 3.716666696559029*^9}, 
+   3.716668939846672*^9, {3.716669185888865*^9, 
+   3.7166691863833933`*^9}},ExpressionUUID->"7af5bdbd-49a4-4620-b306-\
+183c7a82bc17"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"template", " ", "=", "\n", "    ", 
+   RowBox[{"StringTemplate", "[", "\n", "      ", 
+    RowBox[{
+     RowBox[{"Import", "[", 
+      RowBox[{
+       RowBox[{"FileNameJoin", "[", 
+        RowBox[{"{", 
+         RowBox[{"$appName", ",", " ", 
+          RowBox[{"$appName", " ", "<>", " ", "\"\<.m\>\""}]}], "}"}], "]"}], 
+       ",", " ", "\"\<String\>\""}], "]"}], ",", "\n", "      ", 
+     RowBox[{"Delimiters", " ", "->", " ", "\"\<%%\>\""}]}], "\n", "    ", 
+    "]"}]}], ";"}]], "Code",
+ CellChangeTimes->{{3.716666670695592*^9, 3.716666696559029*^9}, {
+  3.716668939846672*^9, 
+  3.716668949165884*^9}},ExpressionUUID->"9ddeff3e-29fc-4084-ade7-\
+b87098821765"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"versionData", " ", "=", " ", 
+  RowBox[{"<|", "\n", "  ", 
+   RowBox[{
+    RowBox[{"\"\<version\>\"", " ", "->", " ", 
+     RowBox[{"Lookup", "[", 
+      RowBox[{
+       RowBox[{"PacletInformation", "[", "$appName", "]"}], ",", " ", 
+       "\"\<Version\>\""}], "]"}]}], ",", "\n", "  ", 
+    RowBox[{"\"\<mathversion\>\"", " ", "->", " ", 
+     RowBox[{"Lookup", "[", 
+      RowBox[{
+       RowBox[{"PacletInformation", "[", "$appName", "]"}], ",", " ", 
+       "\"\<WolframVersion\>\""}], "]"}]}], ",", "\n", "  ", 
+    RowBox[{"\"\<date\>\"", " ", "->", " ", 
+     RowBox[{"DateString", "[", 
+      RowBox[{"{", 
+       RowBox[{
+       "\"\<MonthName\>\"", ",", " ", "\"\< \>\"", ",", " ", 
+        "\"\<DayShort\>\"", ",", " ", "\"\<, \>\"", ",", " ", 
+        "\"\<Year\>\""}], "}"}], "]"}]}]}], "\n", "|>"}]}]], "Code",
+ CellChangeTimes->{{3.716666670695592*^9, 3.716666696559029*^9}, {
+  3.716668939846672*^9, 
+  3.716668941965127*^9}},ExpressionUUID->"5b341841-6767-4412-bc8c-\
+9aae62a078df"],
+
+Cell[BoxData[
+ RowBox[{"\[LeftAssociation]", 
+  RowBox[{
+   RowBox[{"\<\"version\"\>", "\[Rule]", "\<\"0.0.1\"\>"}], ",", 
+   RowBox[{"\<\"mathversion\"\>", "\[Rule]", "\<\"11.0+\"\>"}], ",", 
+   RowBox[{"\<\"date\"\>", "\[Rule]", "\<\"October 10, 2017\"\>"}]}], 
+  "\[RightAssociation]"}]], "Output",
+ CellChangeTimes->{
+  3.716666718428851*^9, 3.7166669141213627`*^9, 3.716666946857149*^9, 
+   3.716667236282588*^9, 3.716667456031192*^9, 3.7166689462621307`*^9, 
+   3.7166691249336987`*^9, 3.716669187977971*^9, 3.716669385624371*^9, 
+   3.716669492404067*^9, {3.716669539741077*^9, 3.716669548578882*^9}, 
+   3.716669647372723*^9, 3.716670048636961*^9, {3.716670905637148*^9, 
+   3.716670911383709*^9}, 3.7166710464264927`*^9, 
+   3.716678240036703*^9},ExpressionUUID->"e22c4624-ece4-4c38-bb6c-\
+90384adb1cf1"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"$appDir", " ", "=", " ", 
+  RowBox[{"FileNameJoin", "[", 
+   RowBox[{"{", 
+    RowBox[{"$buildDir", ",", " ", "$appName"}], "}"}], "]"}]}], "\n", 
+ RowBox[{"CreateDirectory", "[", "$buildDir", "]"}], "\n", 
+ RowBox[{"CopyDirectory", "[", 
+  RowBox[{"$appName", ",", " ", "$appDir"}], "]"}], "\n", 
+ RowBox[{"DeleteDirectory", "[", 
+  RowBox[{
+   RowBox[{"FileNameJoin", "[", 
+    RowBox[{"{", 
+     RowBox[{"$appDir", ",", " ", "\"\<Documentation\>\""}], "}"}], "]"}], 
+   ",", " ", 
+   RowBox[{"DeleteContents", " ", "->", " ", "True"}]}], "]"}]}], "Code",
+ CellChangeTimes->{{3.716666670695592*^9, 3.716666698302693*^9}, 
+   3.7166669510530367`*^9},ExpressionUUID->"340acd12-8400-4d2d-9d13-\
+02fdc8f3df12"],
+
+Cell[BoxData["\<\"mutils-20171010-223716/mutils\"\>"], "Output",
+ CellChangeTimes->{
+  3.716666952227536*^9, 3.716667236332355*^9, 3.716667456927952*^9, 
+   3.716668951291379*^9, 3.716669127385274*^9, 3.716669189708008*^9, 
+   3.716669385672328*^9, 3.716669492468611*^9, {3.7166695399173107`*^9, 
+   3.716669548628131*^9}, 3.716669648142136*^9, 3.716670049416121*^9, {
+   3.716670905687499*^9, 3.716670914089752*^9}, 3.716671049418161*^9, 
+   3.716678241084077*^9},ExpressionUUID->"4ba9896d-1133-42d8-81f6-\
+d9648f5db220"],
+
+Cell[BoxData["\<\"/Users/msollami/repos/mutils/mutils-20171010-223716\"\>"], \
+"Output",
+ CellChangeTimes->{
+  3.716666952227536*^9, 3.716667236332355*^9, 3.716667456927952*^9, 
+   3.716668951291379*^9, 3.716669127385274*^9, 3.716669189708008*^9, 
+   3.716669385672328*^9, 3.716669492468611*^9, {3.7166695399173107`*^9, 
+   3.716669548628131*^9}, 3.716669648142136*^9, 3.716670049416121*^9, {
+   3.716670905687499*^9, 3.716670914089752*^9}, 3.716671049418161*^9, 
+   3.716678241109304*^9},ExpressionUUID->"60b795f5-e6b5-4c7f-8f52-\
+357b34d805ed"],
+
+Cell[BoxData["\<\"/Users/msollami/repos/mutils/mutils-20171010-223716/mutils\"\
+\>"], "Output",
+ CellChangeTimes->{
+  3.716666952227536*^9, 3.716667236332355*^9, 3.716667456927952*^9, 
+   3.716668951291379*^9, 3.716669127385274*^9, 3.716669189708008*^9, 
+   3.716669385672328*^9, 3.716669492468611*^9, {3.7166695399173107`*^9, 
+   3.716669548628131*^9}, 3.716669648142136*^9, 3.716670049416121*^9, {
+   3.716670905687499*^9, 3.716670914089752*^9}, 3.716671049418161*^9, 
+   3.716678241116433*^9},ExpressionUUID->"05926771-f232-478a-9b43-\
+32559e46865b"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"CopyDirectory", "[", "\n", "  ", 
+  RowBox[{
+   RowBox[{"FileNameJoin", "[", 
+    RowBox[{"{", 
+     RowBox[{
+     "\"\<build\>\"", ",", " ", "$appName", ",", " ", 
+      "\"\<Documentation\>\""}], "}"}], "]"}], ",", "\n", "  ", 
+   RowBox[{"FileNameJoin", "[", 
+    RowBox[{"{", 
+     RowBox[{"$appDir", ",", " ", "\"\<Documentation\>\""}], "}"}], "]"}]}], 
+  "\n", "]"}]], "Code",
+ CellChangeTimes->{{3.716666670695592*^9, 3.716666698302693*^9}, 
+   3.7166669510530367`*^9},ExpressionUUID->"506967cd-d821-4046-a9f9-\
+15cffb0a1a9a"],
+
+Cell[BoxData["\<\"/Users/msollami/repos/mutils/mutils-20171010-223716/mutils/\
+Documentation\"\>"], "Output",
+ CellChangeTimes->{
+  3.716666718478862*^9, 3.716666915054347*^9, 3.716666953027931*^9, 
+   3.716667236407535*^9, 3.71666745887166*^9, 3.716668952626358*^9, 
+   3.7166691280900097`*^9, 3.716669190759717*^9, 3.716669385740206*^9, 
+   3.716669495139345*^9, {3.716669540001151*^9, 3.716669548695366*^9}, 
+   3.7166696490861797`*^9, 3.7166700504925117`*^9, {3.7166709057507057`*^9, 
+   3.716670914292116*^9}, 3.716671050841317*^9, 
+   3.71667824233066*^9},ExpressionUUID->"e9207bec-c7bd-48f5-86c7-\
+ae25bba57643"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"SetDirectory", "@", 
+  RowBox[{"FileNameJoin", "[", 
+   RowBox[{"{", 
+    RowBox[{
+    "$appDir", ",", " ", "\"\<Documentation\>\"", ",", " ", 
+     "\"\<English\>\""}], "}"}], "]"}]}]], "Code",
+ CellChangeTimes->{{3.716666670695592*^9, 3.716666703230389*^9}, {
+  3.7166669553088293`*^9, 
+  3.716666956868545*^9}},ExpressionUUID->"46dcac48-0353-41f4-ad07-\
+f1c782cba82b"],
+
+Cell[BoxData["\<\"/Users/msollami/repos/mutils/mutils-20171010-223716/mutils/\
+Documentation/English\"\>"], "Output",
+ CellChangeTimes->{
+  3.716667236440398*^9, 3.716667459895566*^9, 3.716668953775268*^9, 
+   3.7166691297209187`*^9, 3.716669191837667*^9, 3.7166693857905073`*^9, 
+   3.716669495305797*^9, {3.7166695400486317`*^9, 3.716669551474284*^9}, 
+   3.716669649998369*^9, 3.7166700517811604`*^9, {3.716670905799926*^9, 
+   3.716670914332959*^9}, 3.7166710523266907`*^9, 
+   3.7166782433402967`*^9},ExpressionUUID->"4c39bc5f-8b64-4d3d-be6e-\
+cc3f82a4c446"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"MRun", "[", "\n", "  ", 
+  RowBox[{
+   RowBox[{"MCode", "[", "\n", "    ", 
+    RowBox[{
+     RowBox[{"DocumentationSearch`CreateDocumentationIndex", "[", 
+      RowBox[{
+       RowBox[{"Directory", "[", "]"}], ",", " ", 
+       RowBox[{"Directory", "[", "]"}], ",", " ", "\"\<TextSearchIndex\>\"", 
+       ",", " ", 
+       RowBox[{"\"\<UseWolframLanguageData\>\"", " ", "->", " ", "False"}]}], 
+      "]"}], ";"}], "\n", "  ", "]"}], ",", "\n", "  ", "\"\<11.2\>\""}], 
+  "\n", "]"}]], "Code",
+ CellChangeTimes->{{3.716666670695592*^9, 3.716666703230389*^9}, 
+   3.7166669553088293`*^9, {3.716667031229744*^9, 3.716667033339891*^9}, {
+   3.7166701145517073`*^9, 3.71667016765233*^9}, {3.716671056888198*^9, 
+   3.7166710574555807`*^9}},ExpressionUUID->"476a2b82-e1f4-4fc9-ace0-\
+e7e8248dc236"],
+
+Cell[BoxData[
+ RowBox[{"HoldComplete", "[", "Null", "]"}]], "Output",
+ CellChangeTimes->{{3.716670155148653*^9, 3.716670169215962*^9}, {
+  3.716670907725387*^9, 3.716670916821034*^9}, {3.716671069143036*^9, 
+  3.716671125396487*^9}, {3.716678264935018*^9, 
+  3.716678296571927*^9}},ExpressionUUID->"cc82f9e9-2169-4362-93ea-\
+33787e442921"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"ResetDirectory", "[", "]"}], ";"}], "\n", 
+ RowBox[{"CopyFile", "[", 
+  RowBox[{"\"\<LICENSE.txt\>\"", ",", " ", 
+   RowBox[{"FileNameJoin", "[", 
+    RowBox[{"{", 
+     RowBox[{"$appDir", ",", " ", "\"\<LICENSE.txt\>\""}], "}"}], "]"}]}], 
+  "]"}], "\n", 
+ RowBox[{"Export", "[", 
+  RowBox[{
+   RowBox[{"FileNameJoin", "[", 
+    RowBox[{"{", 
+     RowBox[{"$appDir", ",", " ", 
+      RowBox[{"$appName", " ", "<>", " ", "\"\<.m\>\""}]}], "}"}], "]"}], ",",
+    " ", 
+   RowBox[{"template", "[", "versionData", "]"}], ",", " ", 
+   "\"\<String\>\""}], "]"}], "\n", 
+ RowBox[{"DeleteFile", " ", "/@", " ", 
+  RowBox[{"FileNames", "[", 
+   RowBox[{"\"\<.*\>\"", ",", " ", "$appDir", ",", " ", "Infinity"}], 
+   "]"}]}]}], "Code",
+ CellChangeTimes->{{3.716666670695592*^9, 
+  3.7166667089021683`*^9}},ExpressionUUID->"3eb9109b-98de-4e7d-8b36-\
+d112d68fb269"],
+
+Cell[BoxData["\<\"/Users/msollami/repos/mutils/mutils-20171010-223716/mutils/\
+LICENSE.txt\"\>"], "Output",
+ CellChangeTimes->{
+  3.716666725890687*^9, 3.716667048706868*^9, 3.71666724149725*^9, 
+   3.716667469534136*^9, 3.7166689602435627`*^9, 3.716669218297124*^9, 
+   3.7166694980123863`*^9, 3.716669684245556*^9, 3.716670171184638*^9, {
+   3.716670907918161*^9, 3.716670917006961*^9}, 3.716671126741968*^9, 
+   3.7166782982123537`*^9},ExpressionUUID->"1e404737-5a76-44fb-bed7-\
+2b6241c3a32a"],
+
+Cell[BoxData["\<\"mutils-20171010-223716/mutils/mutils.m\"\>"], "Output",
+ CellChangeTimes->{
+  3.716666725890687*^9, 3.716667048706868*^9, 3.71666724149725*^9, 
+   3.716667469534136*^9, 3.7166689602435627`*^9, 3.716669218297124*^9, 
+   3.7166694980123863`*^9, 3.716669684245556*^9, 3.716670171184638*^9, {
+   3.716670907918161*^9, 3.716670917006961*^9}, 3.716671126741968*^9, 
+   3.716678298219728*^9},ExpressionUUID->"d4f9ee4d-bdd8-4147-a5ac-\
+eb0cac62d86c"],
+
+Cell[BoxData[
+ RowBox[{"{", "Null", "}"}]], "Output",
+ CellChangeTimes->{
+  3.716666725890687*^9, 3.716667048706868*^9, 3.71666724149725*^9, 
+   3.716667469534136*^9, 3.7166689602435627`*^9, 3.716669218297124*^9, 
+   3.7166694980123863`*^9, 3.716669684245556*^9, 3.716670171184638*^9, {
+   3.716670907918161*^9, 3.716670917006961*^9}, 3.716671126741968*^9, 
+   3.7166782982260523`*^9},ExpressionUUID->"d7fef610-b53e-4ed2-96bd-\
+81b615b8f7c9"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"p", "=", 
+  RowBox[{"PackPaclet", "[", "$appDir", "]"}]}], "\n", 
+ RowBox[{"DeleteDirectory", "[", 
+  RowBox[{"$appDir", ",", " ", 
+   RowBox[{"DeleteContents", " ", "->", " ", "True"}]}], "]"}], "\n", 
+ RowBox[{"ResetDirectory", "[", "]"}]}], "Code",
+ CellChangeTimes->{{3.716666670695592*^9, 3.7166667089021683`*^9}, {
+  3.716667062508049*^9, 
+  3.716667064435121*^9}},ExpressionUUID->"2d114b17-42a8-48d2-9bd4-\
+0031afc4fd9a"],
+
+Cell[BoxData["\<\"/Users/msollami/repos/mutils/mutils-20171010-223716/mutils-\
+0.0.1.paclet\"\>"], "Output",
+ CellChangeTimes->{
+  3.716666726160735*^9, 3.716667050262315*^9, 3.716667241848524*^9, 
+   3.716667471948736*^9, 3.7166689620688562`*^9, 3.7166692199787083`*^9, 
+   3.7166694983084307`*^9, 3.716669687066791*^9, 3.7166701893829947`*^9, {
+   3.716670908092073*^9, 3.716670917185787*^9}, 3.716671127912356*^9, 
+   3.71667829944914*^9},ExpressionUUID->"29fa71b8-523a-49e9-85fd-\
+740182472124"],
+
+Cell[BoxData["\<\"/Users/msollami/repos/mutils\"\>"], "Output",
+ CellChangeTimes->{
+  3.716666726160735*^9, 3.716667050262315*^9, 3.716667241848524*^9, 
+   3.716667471948736*^9, 3.7166689620688562`*^9, 3.7166692199787083`*^9, 
+   3.7166694983084307`*^9, 3.716669687066791*^9, 3.7166701893829947`*^9, {
+   3.716670908092073*^9, 3.716670917185787*^9}, 3.716671127912356*^9, 
+   3.7166782994575663`*^9},ExpressionUUID->"b5369311-34eb-46df-8c2f-\
+ade6d2640634"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"PacletInformation", "@", "\"\<mutils\>\""}]], "Input",
+ CellChangeTimes->{{3.7166670975588408`*^9, 3.716667105674721*^9}, {
+  3.7166689721028633`*^9, 
+  3.716668972844996*^9}},ExpressionUUID->"c404c0f0-bf85-4abc-9566-\
+2c5a869083c7"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"\<\"Name\"\>", "\[Rule]", "\<\"mutils\"\>"}], ",", 
+   RowBox[{"\<\"Version\"\>", "\[Rule]", "\<\"0.0.1\"\>"}], ",", 
+   RowBox[{"\<\"BuildNumber\"\>", "\[Rule]", "\<\"\"\>"}], ",", 
+   RowBox[{"\<\"Qualifier\"\>", "\[Rule]", "\<\"\"\>"}], ",", 
+   RowBox[{"\<\"WolframVersion\"\>", "\[Rule]", "\<\"11.0+\"\>"}], ",", 
+   RowBox[{"\<\"SystemID\"\>", "\[Rule]", "All"}], ",", 
+   RowBox[{"\<\"Description\"\>", 
+    "\[Rule]", "\<\"Mathematica helper functions\"\>"}], ",", 
+   RowBox[{"\<\"Category\"\>", "\[Rule]", "\<\"\"\>"}], ",", 
+   RowBox[{"\<\"Creator\"\>", "\[Rule]", "\<\"Michael Sollami\"\>"}], ",", 
+   RowBox[{"\<\"Publisher\"\>", "\[Rule]", "\<\"\"\>"}], ",", 
+   RowBox[{"\<\"Support\"\>", "\[Rule]", "\<\"\"\>"}], ",", 
+   RowBox[{"\<\"Internal\"\>", "\[Rule]", "False"}], ",", 
+   RowBox[{"\<\"Location\"\>", 
+    "\[Rule]", "\<\"/Users/msollami/repos/mutils/mutils\"\>"}], ",", 
+   RowBox[{"\<\"Context\"\>", "\[Rule]", 
+    RowBox[{"{", "\<\"mutils`\"\>", "}"}]}], ",", 
+   RowBox[{"\<\"Enabled\"\>", "\[Rule]", "True"}], ",", 
+   RowBox[{"\<\"Loading\"\>", "\[Rule]", "Manual"}]}], "}"}]], "Output",
+ CellChangeTimes->{3.716668973299573*^9, 3.716669221617956*^9, 
+  3.716669689101165*^9, 3.7166701934235573`*^9, 3.716671129783337*^9, 
+  3.7166783016806602`*^9},ExpressionUUID->"7e2b3508-889b-4798-8afb-\
+85a68c7cf46c"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"PacletInstall", "[", 
+  RowBox[{"p", ",", 
+   RowBox[{"\"\<IgnoreVersion\>\"", "\[Rule]", "True"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.7166670719209757`*^9, 3.716667095002419*^9}, 
+   3.716667476218943*^9},ExpressionUUID->"8fa3d128-530e-4c88-aba9-\
+836285f87b14"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+  "Paclet", "[", "\<\"mutils\"\>", ",", "\<\"0.0.1\"\>", ",", "<>", "]"}],
+  PacletManager`Paclet[
+  "Name" -> "mutils", "Version" -> "0.0.1", "MathematicaVersion" -> "11.0+", 
+   "Description" -> "Mathematica helper functions", "Creator" -> 
+   "Michael Sollami", "Thumbnail" -> "Logo.png", "URL" -> 
+   "https://github.com/msollami/mutils", 
+   "Extensions" -> {{
+     "Documentation", "MainPage" -> "ReferencePages/Symbols/iMap", "Language" -> 
+      All}, {"Kernel", "Root" -> ".", "Context" -> "mutils`"}}, "Location" -> 
+   "/Users/msollami/Library/Mathematica/Paclets/Repository/mutils-0.0.1"]]], \
+"Output",
+ CellChangeTimes->{3.716667095744137*^9, 3.716667482449553*^9, 
+  3.716668976075137*^9, 3.7166696980836267`*^9, 3.7166701955746813`*^9, 
+  3.716671146384527*^9, 3.716671219921701*^9, 
+  3.7166783057256117`*^9},ExpressionUUID->"33096de8-bbb1-4ae8-933f-\
+d09ac7b17eac"]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"<<", "mutils`"}]], "Input",
+ CellChangeTimes->{{3.716667112215096*^9, 3.716667115953473*^9}, {
+  3.7166689869246693`*^9, 
+  3.716668987740206*^9}},ExpressionUUID->"501cbddb-c0a2-419b-abda-\
+7b914d49419b"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "iMap"}]], "Input",
+ CellChangeTimes->{{3.7166689906167383`*^9, 
+  3.716668992259941*^9}},ExpressionUUID->"7a61a101-0c5e-4b2c-8d64-\
+f7fb1953f564"],
+
+Cell[BoxData[
+ RowBox[{"\<\"TODO\"\>", "\[NonBreakingSpace]", 
+  ButtonBox[
+   StyleBox["\[RightSkeleton]", "SR"],
+   Active->True,
+   BaseStyle->"Link",
+   ButtonData->"paclet:mutils/ref/iMap"]}]], "Print", "PrintUsage",
+ CellChangeTimes->{3.716669707386574*^9},
+ CellTags->
+  "Info583716655307-6885233",ExpressionUUID->"9fadea85-ddac-4144-9607-\
+adeaa79d8d07"]
+}, Open  ]],
+
+Cell[BoxData["mutils"], "Input",
+ CellChangeTimes->{{3.716669265345498*^9, 
+  3.716669267484006*^9}},ExpressionUUID->"dcbc793e-0e85-4c99-ad2e-\
+437e14f85ee7"]
+}, Open  ]]
+},
+WindowSize->{720, 417},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+FrontEndVersion->"11.2 for Mac OS X x86 (32-bit, 64-bit Kernel) (September \
+10, 2017)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "Info583716655307-6885233"->{
+  Cell[42792, 1106, 362, 10, 47, "Print",ExpressionUUID->"9fadea85-ddac-4144-9607-adeaa79d8d07",
+   CellTags->"Info583716655307-6885233"]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"Info583716655307-6885233", 43666, 1136}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 178, 4, 30, "Input",ExpressionUUID->"a5b9288e-2ab3-49b0-810d-962e6b8680fc"],
+Cell[CellGroupData[{
+Cell[761, 28, 274, 5, 30, "Input",ExpressionUUID->"3e4a6567-696b-408b-9414-5ceb4c7394cc"],
+Cell[1038, 35, 308, 8, 24, "Message",ExpressionUUID->"4bf05122-53a7-46ae-a44a-11ff5f87d20f"],
+Cell[1349, 45, 136, 3, 34, "Output",ExpressionUUID->"40cda8bd-b00e-444f-9852-65dc8d65a1b8"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[1522, 53, 274, 5, 33, "Input",ExpressionUUID->"bdbe88e0-3c53-4ac2-a359-e948cfb854ee"],
+Cell[1799, 60, 170, 4, 34, "Output",ExpressionUUID->"c0fda0f2-104a-4cf0-a4e9-4f596758a88c"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[2006, 69, 417, 7, 30, "Input",ExpressionUUID->"d11ce702-234f-4e8c-bd0d-0b5595392289"],
+Cell[2426, 78, 147, 4, 34, "Output",ExpressionUUID->"6417b663-736c-4bf4-a258-ed72aaf0a108"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[2610, 87, 209, 4, 30, "Input",ExpressionUUID->"bdea98f0-3da4-43db-8b68-dbe21264360b"],
+Cell[2822, 93, 319, 6, 34, "Output",ExpressionUUID->"e8470284-801a-46e5-88e2-75b700bbbc41"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3178, 104, 126, 1, 30, "Input",ExpressionUUID->"fefcc958-80fb-40fa-9a75-8df815b28269"],
+Cell[3307, 107, 812, 16, 34, "Output",ExpressionUUID->"17c1862a-8528-46f7-b6fd-9d51960a7bc7"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4156, 128, 405, 8, 30, "Input",ExpressionUUID->"7d9aea47-28e3-4a4a-a8da-42ef481714b6"],
+Cell[4564, 138, 197, 5, 34, "Output",ExpressionUUID->"0f88ba94-9400-4af7-8df3-4f76d5eda92e"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4798, 148, 291, 6, 30, "Input",ExpressionUUID->"6d7315fc-0fa4-4184-a6b8-a924643585f6"],
+Cell[5092, 156, 194, 4, 34, "Output",ExpressionUUID->"0a780028-485a-4e50-bfca-e1cad5d70f3e"]
+}, Open  ]],
+Cell[5301, 163, 202, 4, 30, "Input",ExpressionUUID->"65598cb0-ec68-418c-b05c-62ea6f9a29d0"],
+Cell[CellGroupData[{
+Cell[5528, 171, 149, 3, 67, "Section",ExpressionUUID->"097acd78-885f-459c-8aeb-6e2eaf1cbe5f"],
+Cell[CellGroupData[{
+Cell[5702, 178, 307, 5, 30, "Input",ExpressionUUID->"28ca7934-ea1f-4af7-8f0f-e66c2d365fa7"],
+Cell[6012, 185, 454, 7, 34, "Output",ExpressionUUID->"b6c590bd-7cd6-47ba-b83a-46600169b815"]
+}, Open  ]],
+Cell[6481, 195, 186, 4, 30, "Input",ExpressionUUID->"bb77249c-8256-4662-88e9-de59a963896f"],
+Cell[6670, 201, 235, 5, 30, "Input",ExpressionUUID->"1d0a7cf4-c1ec-4076-aa9b-80b2ab9406fb"],
+Cell[CellGroupData[{
+Cell[6930, 210, 2787, 67, 474, "Code",ExpressionUUID->"82ef0013-2588-4cd2-a617-2bc3688bc980"],
+Cell[9720, 279, 503, 8, 34, "Output",ExpressionUUID->"db0f9760-4e1e-4cd9-9356-3b13a6a8d290"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[10260, 292, 6999, 138, 1029, "Code",ExpressionUUID->"c42b354e-9157-445c-b227-c0cac5907e99"],
+Cell[CellGroupData[{
+Cell[17284, 434, 201, 7, 41, "Print",ExpressionUUID->"4d2244eb-555b-49e4-bc83-9edfee09da77"],
+Cell[17488, 443, 199, 7, 41, "Print",ExpressionUUID->"306a7227-41ab-4c8d-9b32-2c63a63ef114"],
+Cell[17690, 452, 223, 7, 41, "Print",ExpressionUUID->"11fea7f9-339d-485a-ba3c-5c8f97f6334f"],
+Cell[17916, 461, 224, 7, 41, "Print",ExpressionUUID->"0ac3b4da-6659-415d-9539-045c9040151c"],
+Cell[18143, 470, 223, 7, 41, "Print",ExpressionUUID->"f990e2be-0775-4c56-ad7f-35dc76213de0"],
+Cell[18369, 479, 224, 7, 41, "Print",ExpressionUUID->"4ff79b2a-ca87-4baf-9f3c-9e64e2d2e583"],
+Cell[18596, 488, 226, 7, 41, "Print",ExpressionUUID->"1df3535a-1071-4e79-bc56-be9c2c32277d"],
+Cell[18825, 497, 215, 7, 41, "Print",ExpressionUUID->"9cb1997d-1670-40e6-a1d5-4e13041509fa"]
+}, Open  ]],
+Cell[19055, 507, 560, 10, 34, "Output",ExpressionUUID->"90576ec7-b0d4-4349-a827-847093d8585b"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[19664, 523, 201, 4, 67, "Section",ExpressionUUID->"75f64dd6-34c3-4794-bb9c-06d0bde30052"],
+Cell[19868, 529, 177, 4, 30, "Input",ExpressionUUID->"27533e3b-7553-4905-9b14-190f7c7fed7a"],
+Cell[20048, 535, 186, 4, 30, "Input",ExpressionUUID->"026bf3b4-7c8c-49c0-96df-9c29c61289c8"],
+Cell[CellGroupData[{
+Cell[20259, 543, 307, 5, 30, "Input",ExpressionUUID->"10245d57-f58b-4897-b1b8-05806560c49d"],
+Cell[20569, 550, 505, 8, 34, "Output",ExpressionUUID->"5353c1c8-79ac-41ad-9b84-45c3c56bfc86"]
+}, Open  ]],
+Cell[21089, 561, 235, 5, 30, "Input",ExpressionUUID->"a226e9c3-1d34-409d-85a8-576a29cdd84e"],
+Cell[21327, 568, 239, 5, 30, "Input",ExpressionUUID->"26130984-562a-4a67-86f7-5b6c2b31760a"],
+Cell[21569, 575, 842, 22, 91, "Code",ExpressionUUID->"defa9bf2-b81c-4af5-92fe-5a8fab24dbc4"],
+Cell[CellGroupData[{
+Cell[22436, 601, 811, 17, 167, "Code",ExpressionUUID->"64bf9fdf-290b-4b14-b01f-e6c39fab3a21"],
+Cell[23250, 620, 495, 8, 34, "Output",ExpressionUUID->"d43b8864-7033-4da9-8203-5184cdb6c2f1"]
+}, Open  ]],
+Cell[23760, 631, 460, 11, 52, "Code",ExpressionUUID->"f760f3b3-78ab-4b6c-8bc5-f1228d4d2699"],
+Cell[24223, 644, 605, 14, 137, "Code",ExpressionUUID->"148ad531-08f8-4f01-a366-2e6495c61731"],
+Cell[24831, 660, 590, 14, 91, "Code",ExpressionUUID->"bbb310ed-d27e-4273-900d-3e6c5fac2c6e"],
+Cell[CellGroupData[{
+Cell[25446, 678, 783, 22, 94, "Code",ExpressionUUID->"8145ccab-322f-492d-bbae-708a339366d0"],
+Cell[26232, 702, 574, 9, 34, "Output",ExpressionUUID->"08a4e7dd-e209-48c9-a8ca-b3688037abec"]
+}, Open  ]],
+Cell[26821, 714, 408, 9, 52, "Code",ExpressionUUID->"7af5bdbd-49a4-4620-b306-183c7a82bc17"],
+Cell[27232, 725, 702, 17, 129, "Code",ExpressionUUID->"9ddeff3e-29fc-4084-ade7-b87098821765"],
+Cell[CellGroupData[{
+Cell[27959, 746, 1024, 24, 129, "Code",ExpressionUUID->"5b341841-6767-4412-bc8c-9aae62a078df"],
+Cell[28986, 772, 813, 15, 37, "Output",ExpressionUUID->"e22c4624-ece4-4c38-bb6c-90384adb1cf1"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[29836, 792, 733, 17, 110, "Code",ExpressionUUID->"340acd12-8400-4d2d-9d13-02fdc8f3df12"],
+Cell[30572, 811, 522, 8, 34, "Output",ExpressionUUID->"4ba9896d-1133-42d8-81f6-d9648f5db220"],
+Cell[31097, 821, 546, 9, 34, "Output",ExpressionUUID->"60b795f5-e6b5-4c7f-8f52-357b34d805ed"],
+Cell[31646, 832, 553, 9, 34, "Output",ExpressionUUID->"05926771-f232-478a-9b43-32559e46865b"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[32236, 846, 557, 14, 110, "Code",ExpressionUUID->"506967cd-d821-4046-a9f9-15cffb0a1a9a"],
+Cell[32796, 862, 619, 10, 34, "Output",ExpressionUUID->"e9207bec-c7bd-48f5-86c7-ae25bba57643"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[33452, 877, 395, 10, 52, "Code",ExpressionUUID->"46dcac48-0353-41f4-ad07-f1c782cba82b"],
+Cell[33850, 889, 563, 9, 56, "Output",ExpressionUUID->"4c39bc5f-8b64-4d3d-be6e-cc3f82a4c446"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[34450, 903, 819, 17, 159, "Code",ExpressionUUID->"476a2b82-e1f4-4fc9-ace0-e7e8248dc236"],
+Cell[35272, 922, 339, 6, 34, "Output",ExpressionUUID->"cc82f9e9-2169-4362-93ea-33787e442921"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[35648, 933, 891, 24, 110, "Code",ExpressionUUID->"3eb9109b-98de-4e7d-8b36-d112d68fb269"],
+Cell[36542, 959, 496, 8, 34, "Output",ExpressionUUID->"1e404737-5a76-44fb-bed7-2b6241c3a32a"],
+Cell[37041, 969, 460, 7, 34, "Output",ExpressionUUID->"d4f9ee4d-bdd8-4147-a5ac-eb0cac62d86c"],
+Cell[37504, 978, 442, 8, 34, "Output",ExpressionUUID->"d7fef610-b53e-4ed2-96bd-81b615b8f7c9"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[37983, 991, 453, 10, 91, "Code",ExpressionUUID->"2d114b17-42a8-48d2-9bd4-0031afc4fd9a"],
+Cell[38439, 1003, 499, 8, 34, "Output",ExpressionUUID->"29fa71b8-523a-49e9-85fd-740182472124"],
+Cell[38941, 1013, 457, 7, 34, "Output",ExpressionUUID->"b5369311-34eb-46df-8c2f-ade6d2640634"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[39435, 1025, 257, 5, 30, "Input",ExpressionUUID->"c404c0f0-bf85-4abc-9566-2c5a869083c7"],
+Cell[39695, 1032, 1390, 25, 140, "Output",ExpressionUUID->"7e2b3508-889b-4798-8afb-85a68c7cf46c"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[41122, 1062, 293, 6, 30, "Input",ExpressionUUID->"8fa3d128-530e-4c88-aba9-836285f87b14"],
+Cell[41418, 1070, 928, 18, 34, "Output",ExpressionUUID->"33096de8-bbb1-4ae8-933f-d09ac7b17eac"]
+}, Open  ]],
+Cell[42361, 1091, 228, 5, 30, "Input",ExpressionUUID->"501cbddb-c0a2-419b-abda-7b914d49419b"],
+Cell[CellGroupData[{
+Cell[42614, 1100, 175, 4, 30, "Input",ExpressionUUID->"7a61a101-0c5e-4b2c-8d64-f7fb1953f564"],
+Cell[42792, 1106, 362, 10, 47, "Print",ExpressionUUID->"9fadea85-ddac-4144-9607-adeaa79d8d07",
+ CellTags->"Info583716655307-6885233"]
+}, Open  ]],
+Cell[43169, 1119, 158, 3, 30, "Input",ExpressionUUID->"dcbc793e-0e85-4c99-ad2e-437e14f85ee7"]
+}, Open  ]]
+}
+]
+*)
+
