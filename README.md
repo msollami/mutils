@@ -4,23 +4,24 @@
 
 # mutils
 
-My personal suite of *Mathematica* utilities.
+My personal suite of *Mathematica* utilities. This package was primarily created for my own needs, if however you find it useful, please drop me an email.
 
-I'll have a blog post for a detailed introduction to mutils and up-to-date troubleshooting information out with the initial release.
+* The paclet building scripts are from szhorvat's excellent [MaTeX package](https://github.com/szhorvat/MaTeX).
+* I'll have a [blog post](http://mikesollami.com) out soon for a detailed introduction to mutils and up-to-date troubleshooting information out with the initial release.
 
 ## Installation
 
- - [Download the latest release](https://github.com/msollami/mutils/releases), distributed as a `.paclet` file, and install it using the `PacletInstall` function in Mathematica.  For example, assuming that the file `mutils-0.0.1.pacle` was downloaded into the directory `~/Downloads`, evaluate
+ - [Download the latest release](https://github.com/msollami/mutils/releases), distributed as a `.paclet` file, and install it using the `PacletInstall` function in Mathematica.  For example, assuming that the file `mutils-0.0.1.paclet` was downloaded into the directory `~/Downloads`, evaluate
 
 	```	mathematica
 	Needs["PacletManager`"]
 	PacletInstall["~/Downloads/mutils-0.0.1.paclet"]
 	```        
 
-- Another way to just load the package without the documentation:
+- If Paclets bother you, just load the package code without the documentation:
 
 	``` mathematica
-	Import @ "https://raw.githubusercontent.com/msollami/mutils/master/mutils.m"
+	Import @ "https://raw.githubusercontent.com/msollami/mutils/master/mutils/mutils.m"
 	```
 
 ## Releases
@@ -32,11 +33,7 @@ I'll have a blog post for a detailed introduction to mutils and up-to-date troub
 
 ## Feedback
 
-The paclet building scripts are from [szhorvat's MaTeX](https://github.com/szhorvat/MaTeX).
-
-This package was primarily created for my own needs.  However, if you find it useful, feel free to drop me an email.
-
-Send feedback or bug reports to `msollami` at `gmail.com` or [open an issue in the tracker](https://github.com/msollami/mutils/issues).
+* Send feedback or bug reports to `msollami` at `gmail.com` or [open an issue in the tracker](https://github.com/msollami/mutils/issues).
 
 
 

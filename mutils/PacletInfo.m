@@ -12,7 +12,7 @@ Paclet[
     URL -> "https://github.com/msollami/mutils",
     Extensions -> 
         {
-            {"Documentation", MainPage -> "ReferencePages/Symbols/iMap", Language -> All}, 
+            {"Documentation", MainPage -> "Guides/mutils", Language -> All}, 
             {"Kernel", Root -> ".", Context -> "mutils`"}
         }
 ]
