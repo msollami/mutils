@@ -1,4 +1,4 @@
-[![GitHub (pre-)release](https://img.shields.io/github/release/msollami/mutils/all.svg)](https://github.com/szhorvat/MaTeX/releases)
+[![GitHub (pre-)release](https://img.shields.io/github/release/msollami/mutils/all.svg)](https://github.com/msollami/mutils/releases)
 [![Github All Releases](https://img.shields.io/github/downloads/msollami/mutils/total.svg)](https://github.com/msollami/mutils/releases)
 
 
