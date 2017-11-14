@@ -1,7 +1,7 @@
 Resources[
     Version[1],
     Paclet[
-        PacletFolder["mutils"],
+        DocumentationFolder["mutils/Documentation"],
         FunctionPaclet[True]
     ]
 ]

@@ -1,10 +1,10 @@
 (* Paclet Info File *)
 
-(* created 2017/10/10*)
+(* created 2017/11/14*)
 
 Paclet[
     Name -> "mutils",
-    Version -> "0.0.1",
+    Version -> "0.1.0",
     MathematicaVersion -> "11.0+",
     Description -> "Mathematica helper functions",
     Creator -> "Michael Sollami",
