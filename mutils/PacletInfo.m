@@ -4,7 +4,7 @@
 
 Paclet[
     Name -> "mutils",
-    Version -> "0.1.0",
+    Version -> "0.1.1",
     MathematicaVersion -> "11.0+",
     Description -> "Mathematica helper functions",
     Creator -> "Michael Sollami",

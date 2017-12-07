@@ -57,7 +57,8 @@ netVertices[net_] := Keys@Normal[net]["Vertices"]
 
 This::usage = "This[] is a shortcut for evaluation notebook";
 
-Backup::usage = "Backup[] creates a file.bak of the notebook in its directory.";
+Backup::usage = "Backup[] creates a backup file of the EvaluationNotebook.
+Backup[f_] creates a backup file of the file f.";
 EditFile::usage = "Opens file in with app specified by $textEditorPath.";
 ShowInFinder::usage = "Shows file in finder.";
 ParentDir::usage = "Returns the parent directory of a file.";
@@ -101,9 +102,6 @@ GitStatus[dir] returns info on the git repository located in dir.";
 (* ::Subsection:: *)
 (*System Additions*)
 
-
-NotebookBackup::usage="NotebookBackup[] creates a copy of the current notebook with vXXX appended to the filename.";
-
 RandomString::usage="RandomString[s, n] creates a string of n characters by randomly sampling string s";
 
 HumanTime::usage = "HumanTime[seconds] takes an amount of time in seconds and returns a human readable form.";
@@ -113,7 +111,7 @@ ListView::usage="ListView[expr] produces a dynamic graphic to explore parts of e
 mmaFind::usage="mmaSearch[\"image_ext*\"] will find paths mma-related files matching e.g.
 \"/Applications/Mathematica.app/Contents/SystemFiles/Links/LibraryLink/LibraryResources/Source/image_external.c\"";
 
-LocalNames::usage="LocalNames[] prints a list of LocalSymbols";
+LocalNames::usage="LocalNames[] prints a list of all existing LocalSymbols.";
 Warn::usage="Warn[w] prints a warning string w";
 ToSequence::usage="Shortcut for Sequence @@ l";
 ToAssociation::usage="ToAssociation[f_Function, keys_List] returns <| k->f[k], ...|>
@@ -355,7 +353,6 @@ Begin["Private`"];
 (*Initialization*)
 
 
-Backup[f_String] := CopyFile[f, f<>".bak"];
 EditFile[f_] := StartProcess[{$textEditorPath, f}];
 
 
@@ -1283,21 +1280,23 @@ todayButton[] := Button["Today", NotebookWrite[EvaluationNotebook[], {Cell[CellG
         "DayShort"}], "Section", "WholeCellGroupOpener" -> True],
         CellGroupData[{Cell["", "Item"]}]}]]}]; SelectionMove[EvaluationNotebook[],Previous,CellContents,1]];
 
-Clear@NotebookBackup;
-NotebookBackup[nb_:None] := Module[{path=nb, dir, base, ext, ds, newPath},
-	If[path==None, path = NotebookFileName[]];
+Clear @ Backup;
+Backup[f_String] := CopyFile[f, f<>".bak"];
+Backup[] := Module[{path, dir, base, ext, ds, newPath},
+	path = NotebookFileName@EvaluationNotebook[];
 	dir = FileNameJoin[{DirectoryName@path,"backups"}];
 	If[!DirectoryQ[dir], CreateDirectory[dir]];
 	base = FileBaseName@path;
 	ext= FileExtension@path;
 	ds = DateString[{"(","Year",".","MonthShort",".","DayShort"," at ","Hour12Short",".","MinuteShort",".", "SecondShort"," ","AMPMLowerCase", ")"}];
 	newPath = FileNameJoin[{dir,base<>" "<>ds<>"."<>ext}];
-	(*Warn["Saved a copy this notebook as ", Hyperlink @ newPath];*)
+	Warn["Saved a copy this notebook as ", Hyperlink @ newPath];
 	CopyFile[path, newPath];
 ];
+
 Clear@StartPeriodicBackup;
 StartPeriodicBackup[interval_:60] := Module[{task, n=NotebookFileName@EvaluationNotebook[]},
-	task = CreateScheduledTask[If[MemberQ[Quiet[NotebookFileName /@ Notebooks[]], n], NotebookBackup[n], 
+	task = CreateScheduledTask[If[MemberQ[Quiet[NotebookFileName /@ Notebooks[]], n], Backup[], 
 		RemoveScheduledTask[$BackupTasks[n]]], interval];
 	If[!ValueQ @ $BackupTasks, $BackupTasks=<||>];
 	$BackupTasks[n] = task;
@@ -1306,7 +1305,7 @@ StartPeriodicBackup[interval_:60] := Module[{task, n=NotebookFileName@Evaluation
 Clear@StopPeriodicBackup
 StopPeriodicBackup[]:=If[ValueQ@$BackupTasks, RemoveScheduledTask/@$BackupTasks; $BackupTasks=<||>];
         
-backupButton[nb_:None] := Button["Backup", NotebookBackup[nb]]
+backupButton[nb_:None] := Button["Backup", Backup[]]
 
 
 
