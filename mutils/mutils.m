@@ -434,8 +434,8 @@ iMap[func_, list_] :=
 					fullsize += ByteCount[lastresult]; 
 					lastresult], {n, Range[len]}],
 			Refresh[
-				InformationPanel["iMap Progress",
-					{
+				InformationPanel[ "iMap Progress",
+				{
 					{"Progress", If[aborted, Pane[ProgressIndicator[Appearance->"Percolate"], ImageSize -> 200], ProgressIndicator[n/len]]},
 					{"Item", Text @ StringForm["`` / ``", FormatInteger@n, FormatInteger@len]},
 					{"Size" , Text @ HumanSize[fullsize]},
