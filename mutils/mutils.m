@@ -440,7 +440,8 @@ iMap[func_, list_] :=
 					fullsize += ByteCount[lastresult]; 
 					lastresult], {n, Range[len]}],
 			Refresh[
-				MachineLearning`InformationBox[{
+				InformationPanel[ "iMap Progress",
+				{
 					{"Progress", If[aborted, Pane[ProgressIndicator[Appearance->"Percolate"], ImageSize -> 200], ProgressIndicator[n/len]]},
 					{"Item", Text @ StringForm["`` / ``", FormatInteger@n, FormatInteger@len]},
 					{"Size" , Text @ HumanSize[fullsize]},
@@ -448,8 +449,7 @@ iMap[func_, list_] :=
 					{"Actions", Row @ {Button["Abort", aborted = True;
 											Warn @ StringForm["iMap aborted at ``% after ``, only `` items were completed of ``.", 
 											ToString@Round[n/len*100.,1], HumanTime[AbsoluteTime[]-begintime], FormatInteger@n, FormatInteger@len], 
-										Method -> "Preemptive", Enabled -> Dynamic[! aborted]]}}},
-					"iMap Progress"
+										Method -> "Preemptive", Enabled -> Dynamic[! aborted]]}}}
 				],
 				UpdateInterval -> 0.5, TrackedSymbols -> {}]
 		]
