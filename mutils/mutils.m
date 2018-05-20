@@ -19,18 +19,15 @@ If[$VersionNumber < 11,
 
 
 BeginPackage["mutils`", {"GeneralUtilities`", "MachineLearning`", "DatabaseLink`"}];
-(* Customizations *)
 
 
 (* ::Subsection:: *)
 (*Paths*)
 
 
-$textEditorPath = "/Applications/Sublime Text.app/Contents/MacOS/Sublime Text";
-
-
 (* ::Subsection:: *)
 (*Core Aliases*)
+
 
 (*TODO override Append/AppendTo to work on Bags*)
 Bag = Internal`Bag;
@@ -72,6 +69,8 @@ InitRedirect::usage="initRedirect[newInitFilePath]";
 InstallShortcuts::usage="InstallShortcuts[] will install various shortcuts."
 UninstallShortcuts::usage="UninstallShortcuts[] will uninstall various shortcuts."
 
+
+
 (* ::Subsection:: *)
 (*Dynamic*)
 
@@ -102,6 +101,7 @@ GitStatus[dir] returns info on the git repository located in dir.";
 (* ::Subsection:: *)
 (*System Additions*)
 
+
 RandomString::usage="RandomString[s, n] creates a string of n characters by randomly sampling string s";
 
 HumanTime::usage = "HumanTime[seconds] takes an amount of time in seconds and returns a human readable form.";
@@ -123,13 +123,6 @@ joinTo::usage = "JoinTo[var, list] sets var to Join[var, list]";
 above::usage = "above[] returns the ToExpression of the contents in the cell above the execution cell";
 aboveCell::usage = "aboveCell[] returns the fullform of the cell above the execution cell";
 Size::usage = "Size[v] returns user friendly size information on a variable v.";
-
-filterOpts::usage = "TODO";
-deleteSpace::usage = "TODO";
-deleteFailed::usage = "TODO";
-
-EncryptPath::usage = "TODO";
-DecryptPath::usage = "TODO";
 
 
 
@@ -196,7 +189,7 @@ assnMenu::usage = "assnMenu[func, assn] gives a dynamic popup menu of assn's val
 
 PrintMessage::usage = "PrintMessage[m] prints a message m to the console.";
 SetDock::usage = "SetDock quickly sets up a docked cell in a notebook";	
-ClearDock::usage = "ClearDock[] removes any docked cell in the EvaluationNotebook";
+RemoveDock::usage = "RemoveDock[] removes any docked cell in the EvaluationNotebook";
 
 startStopButton::usage = "TODO";
 qaButton::usage = "TODO";
@@ -371,7 +364,8 @@ InitRedirect[d_?DirectoryQ] := (
 
 
 $pacname = ParentDir[$InputFileName];
- 
+
+(* TODO make this work with Windows and Linux *) 
 InstallShortcuts[] := Module[{customKeyFile, keyFile, backupKeyFile},
 	customKeyFile = FileNameJoin[{$pacname, "KeyEventTranslations.tr"}];
 	keyFile = FileNameJoin[{$InstallationDirectory, 
@@ -402,10 +396,10 @@ UninstallShortcuts[] := Module[{backupKeyFile, keyFile},
 	
 	CopyFile[backupKeyFile, keyFile, OverwriteTarget -> True];
 	DeleteFile[backupKeyFile];
-	
 	Print["Key shortcuts uninstalled.\nPlease restart Mathematica to complete uninstallation..."]	
-
 ]
+
+
 
 (* ::Subsection:: *)
 (*Dynamic*)
@@ -440,7 +434,8 @@ iMap[func_, list_] :=
 					fullsize += ByteCount[lastresult]; 
 					lastresult], {n, Range[len]}],
 			Refresh[
-				MachineLearning`InformationBox[{
+				InformationPanel["iMap Progress",
+					{
 					{"Progress", If[aborted, Pane[ProgressIndicator[Appearance->"Percolate"], ImageSize -> 200], ProgressIndicator[n/len]]},
 					{"Item", Text @ StringForm["`` / ``", FormatInteger@n, FormatInteger@len]},
 					{"Size" , Text @ HumanSize[fullsize]},
@@ -448,8 +443,7 @@ iMap[func_, list_] :=
 					{"Actions", Row @ {Button["Abort", aborted = True;
 											Warn @ StringForm["iMap aborted at ``% after ``, only `` items were completed of ``.", 
 											ToString@Round[n/len*100.,1], HumanTime[AbsoluteTime[]-begintime], FormatInteger@n, FormatInteger@len], 
-										Method -> "Preemptive", Enabled -> Dynamic[! aborted]]}}},
-					"iMap Progress"
+										Method -> "Preemptive", Enabled -> Dynamic[! aborted]]}}}
 				],
 				UpdateInterval -> 0.5, TrackedSymbols -> {}]
 		]
@@ -1258,6 +1252,7 @@ setDingbat[icell_, db_]:=Module[{cell=icell},
 (* ::Subsection:: *)
 (*Custom Buttons*)
 
+
 SetAttributes[niceButton, HoldAll];
 SetAttributes[niceButton2, HoldAll]; 
 niceButton[label_, action_] := Deploy @ Button[Text@ToString@label, action, Appearance -> "DialogBox", BaseStyle -> {FontFamily -> "Source Code Pro", Bold, Blue, 10}, ImageSize -> {Full, Full}, Alignment -> {Center, Center}];
@@ -1313,8 +1308,8 @@ backupButton[nb_:None] := Button["Backup", Backup[]]
 buttonDock[buttons_] := SetOptions[EvaluationNotebook[], DockedCells -> Cell[RawBoxes[MakeBoxes @ buttons]]];
 buttonDock[buttons_List] := SetOptions[EvaluationNotebook[], DockedCells -> Cell[RawBoxes[MakeBoxes @ Row[buttons]]]];
 
-ClearDock[] := SetOptions[EvaluationNotebook[], "DockedCells"->None];
-ClearDock[nb_] := SetOptions[nb, "DockedCells"->None];
+RemoveDock[] := SetOptions[EvaluationNotebook[], "DockedCells"->None];
+RemoveDock[nb_] := SetOptions[nb, "DockedCells"->None];
 
 SetDock["Backup"] := buttonDock[backupButton[]]
 
@@ -1327,7 +1322,6 @@ SetDingbat[cell_, ding_] := SetOptions[cell, CellDingbat -> ToBoxes[ding]]
 (*Strings*)
 
 
-SetAttributes[dropFrom,{HoldFirst}];
 SubstringQ[str_, sub___] := StringFreeQ[str,sub];
 
 
@@ -1921,6 +1915,7 @@ randomImage[str_String, i_Integer, j_Integer] := Module[{urls},
 
 (* ::Subsection:: *)
 (*Writing*)
+
 
 Clear[Rhymes];
 Rhymes[r_] := Rhymes[r] = Module[{url, links, rhy},
