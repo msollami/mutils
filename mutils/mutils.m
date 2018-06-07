@@ -519,12 +519,12 @@ iScan[func_, list_, opts:OptionsPattern[]] := DynamicModule[
 	aborted = False;
 	timetaken = 0;
 	cell = If[!persist, PrintTemporary, Print] @
-			MachineLearning`InformationBox[{
+			InformationPanel["iScan Progress", {
 				{"Progress", ProgressIndicator[Dynamic[If[index <= 0 && len === 0, 1.0, index / Max[len-1,1]], TrackedSymbols :> {finished, index}], ImageSize -> Small]},
 				{"Progress", Style[title, 13, Background -> LightOrange]},
 				{"Progress", Dynamic["(" <> ratiostring[index, len] <> ", " <> ToString[Round[timetaken,.01]] <> "s)", TrackedSymbols :> {finished, index}]},
 				{"Progress", Dynamic[If[ValueQ[label], label, ""], TrackedSymbols :> {label}]}
-			}, "iScan Progress"];
+			}];
 
 	Scan[
 		Function[
@@ -551,15 +551,14 @@ iScan[func_, list_, opts:OptionsPattern[]] := DynamicModule[
 		Monitor[
 			Scan[(If[TrueQ @ aborted, n++, n++;func[#]])&, list],
 			Refresh[
-				MachineLearning`InformationBox[{
+				InformationPanel["iScan Progress", {
 					{"Progress", If[aborted, Pane[ProgressIndicator[Appearance->"Percolate"], ImageSize -> 200], ProgressIndicator[n/len]]},
 					{"Item", Text @ StringForm["`` / ``", FormatInteger@n, FormatInteger@len]},
 					{"Time" , Text @ predictTime[begintime, n/len]},
 					{"Actions", Row @ {Button["Abort", aborted = True;
 											Warn @ StringForm["iScan aborted at ``% after ``, only `` items were completed of ``.", 
 											ToString@Round[n/len*100.,1], HumanTime[AbsoluteTime[]-begintime], FormatInteger@n, FormatInteger@len], 
-										Method -> "Preemptive", Enabled -> Dynamic[! aborted]]}}},
-					"iScan Progress"
+										Method -> "Preemptive", Enabled -> Dynamic[! aborted]]}}}
 				],
 				UpdateInterval -> 0.5, TrackedSymbols -> {}]
 		]
@@ -1496,12 +1495,12 @@ part[spec__][data_] := data[[spec]];
 
 ToList = Developer`ToList;
 
-
 MapOrApply[f_, m_] := If[ListQ[m], f/@m, f@m]
 
-
+Clear @ DropColumn;
 DropColumn[mat_, n_] := Module[
 	{toDrop, toKeep, numberOfColumns, normalized, fixNegs},
+	If[Depth@mat != 3, Warn @ "DropColumn is for matrices!"; Return @ $Failed];
 	numberOfColumns = Length[mat[[1]]];
 	fixNegs = If[# < 0, numberOfColumns + # + 1, #]&;
 	toDrop = If[ListQ @ n, fixNegs /@ n, {fixNegs @ n}];
