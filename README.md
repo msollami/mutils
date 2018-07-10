@@ -11,18 +11,26 @@ My personal suite of *Mathematica* utilities. This package was primarily created
 
 ## Installation
 
- - [Download the latest release](https://github.com/msollami/mutils/releases), distributed as a `.paclet` file, and install it using the `PacletInstall` function in Mathematica.  For example, assuming that the file `mutils-X.Y.Z.paclet` was downloaded into the directory `~/Downloads`, evaluate
+1. [Download the latest release](https://github.com/msollami/mutils/releases), distributed as a `.paclet` file,
+2. Install it using the `PacletInstall` function in Mathematica:
 
 	```	mathematica
 	Needs["PacletManager`"]
-	PacletInstall["~/Downloads/mutils-X.Y.Z.paclet"]
+	PacletInstall["~/Downloads/mutils-1.0.0.paclet"]
 	```        
 
-- If Paclets really bother you, just may load the package code without the documentation:
+- Beware loading the package file directly as things may break if installed this way:
 
 	``` mathematica
 	Import @ "https://raw.githubusercontent.com/msollami/mutils/master/mutils/mutils.m"
 	```
+
+## Testing
+
+Tests are stored in `Tests/tests.wlt`
+
+- To run the package's tests, run `Tests/test_summary.nb`
+- To add new tests to the package, add them as testing cells in `Tests/test.nb` and then export to `Tests/tests.wlt` file.
 
 ## Feedback
 

@@ -1,0 +1,271 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     11379,        261]
+NotebookOptionsPosition[     10763,        242]
+NotebookOutlinePosition[     11115,        258]
+CellTagsIndexPosition[     11072,        255]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[
+ RowBox[{"TestReport", "/@", 
+  RowBox[{
+  "FileNames", "[", 
+   "\"\</Users/msollami/Dropbox/personal_github/mutils/mutils/Tests/*.wlt\>\"\
+", "]"}]}]], "Input",
+ CellLabel->"In[19]:=",ExpressionUUID->"068633c9-5c01-4b06-bb02-4454e7c5e514"],
+
+Cell[BoxData["\<\"DropColumn is for matrices!\"\>"], "Echo",ExpressionUUID->"518a26e6-69c3-4cd6-b23e-2eb9c9dfbdeb"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  InterpretationBox[
+   RowBox[{
+    TagBox["TestReportObject",
+     "SummaryHead"], "[", 
+    DynamicModuleBox[{Typeset`open$$ = True, Typeset`embedState$$ = "Ready"}, 
+     
+     TemplateBox[{PaneSelectorBox[{False -> GridBox[{{
+             PaneBox[
+              ButtonBox[
+               DynamicBox[
+                FEPrivate`FrontEndResource[
+                "FEBitmaps", "SquarePlusIconMedium"]], 
+               ButtonFunction :> (Typeset`open$$ = True), Appearance -> None, 
+               Evaluator -> Automatic, Method -> "Preemptive"], 
+              Alignment -> {Center, Center}, ImageSize -> 
+              Dynamic[{
+                Automatic, 3.5 CurrentValue["FontCapHeight"]/
+                 AbsoluteCurrentValue[Magnification]}]], 
+             GraphicsBox[{
+               InsetBox[
+                BoxData[
+                 FormBox[
+                  PaneBox[
+                   DynamicBox[
+                    FEPrivate`FrontEndResource[
+                    "MUnitExpressions", "SuccessIcon"]], Alignment -> Center, 
+                   ImageSize -> 
+                   Dynamic[{
+                    Automatic, 3.5 CurrentValue["FontCapHeight"]/
+                    AbsoluteCurrentValue[Magnification]}]], 
+                  TraditionalForm]]]}, PlotRange -> {{0, 1}, {0, 1}}, 
+              Background -> GrayLevel[0.93], Axes -> False, AspectRatio -> 1, 
+              ImageSize -> 
+              Dynamic[{
+                Automatic, 3.5 CurrentValue["FontCapHeight"]/
+                 AbsoluteCurrentValue[Magnification]}], Frame -> True, 
+              FrameTicks -> None, FrameStyle -> Directive[
+                Thickness[Tiny], 
+                GrayLevel[0.55]]], 
+             GridBox[{{
+                RowBox[{
+                  TagBox["\"Title: \"", "SummaryItemAnnotation"], 
+                  "\[InvisibleSpace]", 
+                  TagBox["\"Test Report: tests.wlt\"", "SummaryItem"]}], 
+                "\[SpanFromLeft]"}, {
+                RowBox[{
+                  TagBox["\"Success rate: \"", "SummaryItemAnnotation"], 
+                  "\[InvisibleSpace]", 
+                  TagBox[
+                   TemplateBox[{"100", "\"%\""}, "RowDefault"], 
+                   "SummaryItem"]}], 
+                RowBox[{
+                  TagBox["\"Tests run: \"", "SummaryItemAnnotation"], 
+                  "\[InvisibleSpace]", 
+                  TagBox["2", "SummaryItem"]}]}}, 
+              GridBoxAlignment -> {
+               "Columns" -> {{Left}}, "Rows" -> {{Automatic}}}, AutoDelete -> 
+              False, GridBoxItemSize -> {
+               "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+              GridBoxSpacings -> {
+               "Columns" -> {{2}}, "Rows" -> {{Automatic}}}, 
+              BaseStyle -> {
+               ShowStringCharacters -> False, NumberMarks -> False, 
+                PrintPrecision -> 3, ShowSyntaxStyles -> False}]}}, 
+           GridBoxAlignment -> {"Rows" -> {{Top}}}, AutoDelete -> False, 
+           GridBoxItemSize -> {
+            "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+           BaselinePosition -> {1, 1}], True -> GridBox[{{
+             PaneBox[
+              ButtonBox[
+               DynamicBox[
+                FEPrivate`FrontEndResource[
+                "FEBitmaps", "SquareMinusIconMedium"]], 
+               ButtonFunction :> (Typeset`open$$ = False), Appearance -> None,
+                Evaluator -> Automatic, Method -> "Preemptive"], 
+              Alignment -> {Center, Center}, ImageSize -> 
+              Dynamic[{
+                Automatic, 3.5 CurrentValue["FontCapHeight"]/
+                 AbsoluteCurrentValue[Magnification]}]], 
+             GraphicsBox[{
+               InsetBox[
+                BoxData[
+                 FormBox[
+                  PaneBox[
+                   DynamicBox[
+                    FEPrivate`FrontEndResource[
+                    "MUnitExpressions", "SuccessIcon"]], Alignment -> Center, 
+                   ImageSize -> 
+                   Dynamic[{
+                    Automatic, 3.5 CurrentValue["FontCapHeight"]/
+                    AbsoluteCurrentValue[Magnification]}]], 
+                  TraditionalForm]]]}, PlotRange -> {{0, 1}, {0, 1}}, 
+              Background -> GrayLevel[0.93], Axes -> False, AspectRatio -> 1, 
+              ImageSize -> 
+              Dynamic[{
+                Automatic, 3.5 CurrentValue["FontCapHeight"]/
+                 AbsoluteCurrentValue[Magnification]}], Frame -> True, 
+              FrameTicks -> None, FrameStyle -> Directive[
+                Thickness[Tiny], 
+                GrayLevel[0.55]]], 
+             GridBox[{{
+                RowBox[{
+                  TagBox["\"Title: \"", "SummaryItemAnnotation"], 
+                  "\[InvisibleSpace]", 
+                  TagBox["\"Test Report: tests.wlt\"", "SummaryItem"]}], 
+                "\[SpanFromLeft]"}, {
+                RowBox[{
+                  TagBox["\"Success rate: \"", "SummaryItemAnnotation"], 
+                  "\[InvisibleSpace]", 
+                  TagBox[
+                   TemplateBox[{"100", "\"%\""}, "RowDefault"], 
+                   "SummaryItem"]}], 
+                RowBox[{
+                  TagBox["\"Tests run: \"", "SummaryItemAnnotation"], 
+                  "\[InvisibleSpace]", 
+                  TagBox["2", "SummaryItem"]}]}, {
+                RowBox[{
+                  TagBox["\"Succeeded: \"", "SummaryItemAnnotation"], 
+                  "\[InvisibleSpace]", 
+                  TagBox["2", "SummaryItem"]}], "\[SpanFromLeft]"}, {
+                RowBox[{
+                  TagBox["\"Failed: \"", "SummaryItemAnnotation"], 
+                  "\[InvisibleSpace]", 
+                  TagBox["0", "SummaryItem"]}], "\[SpanFromLeft]"}, {
+                RowBox[{
+                  TagBox[
+                  "\"Failed with wrong results: \"", "SummaryItemAnnotation"],
+                   "\[InvisibleSpace]", 
+                  TagBox["0", "SummaryItem"]}], "\[SpanFromLeft]"}, {
+                RowBox[{
+                  TagBox[
+                  "\"Failed with messages: \"", "SummaryItemAnnotation"], 
+                  "\[InvisibleSpace]", 
+                  TagBox["0", "SummaryItem"]}], "\[SpanFromLeft]"}, {
+                RowBox[{
+                  TagBox["\"Failed with errors: \"", "SummaryItemAnnotation"],
+                   "\[InvisibleSpace]", 
+                  TagBox["0", "SummaryItem"]}], "\[SpanFromLeft]"}}, 
+              GridBoxAlignment -> {
+               "Columns" -> {{Left}}, "Rows" -> {{Automatic}}}, AutoDelete -> 
+              False, GridBoxItemSize -> {
+               "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+              GridBoxSpacings -> {
+               "Columns" -> {{2}}, "Rows" -> {{Automatic}}}, 
+              BaseStyle -> {
+               ShowStringCharacters -> False, NumberMarks -> False, 
+                PrintPrecision -> 3, ShowSyntaxStyles -> False}]}}, 
+           GridBoxAlignment -> {"Rows" -> {{Top}}}, AutoDelete -> False, 
+           GridBoxItemSize -> {
+            "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+           BaselinePosition -> {1, 1}]}, 
+        Dynamic[Typeset`open$$], ImageSize -> Automatic]},
+      "SummaryPanel"],
+     DynamicModuleValues:>{}], "]"}],
+   TestReportObject[
+    Association[
+    "Title" -> "Test Report: tests.wlt", "TimeElapsed" -> 
+     Quantity[1., "Seconds"], "TestsSucceededCount" -> 2, "TestsFailedCount" -> 
+     0, "TestsFailedWrongResultsCount" -> 0, "TestsFailedWithMessagesCount" -> 
+     0, "TestsFailedWithErrorsCount" -> 0, "Aborted" -> False, "TestResults" -> 
+     Association[1 -> TestResultObject[
+         Association[
+         "TestClass" -> None, "TestIndex" -> 1, "TestID" -> 
+          "fa2dd618-a37b-4b9a-9b2e-219d85121cda", "Outcome" -> "Success", 
+          "Input" -> HoldForm[
+            mutils`DropColumn[{1, 2, 3}, 2]], "ExpectedOutput" -> 
+          HoldForm[$Failed], "ActualOutput" -> HoldForm[$Failed], 
+          "ExpectedMessages" -> {}, "ActualMessages" -> {}, 
+          "AbsoluteTimeUsed" -> 
+          Quantity[0.026477`4.573383773265246, "Seconds"], "CPUTimeUsed" -> 
+          Quantity[0.0004999999999988347, "Seconds"], "MemoryUsed" -> 
+          Quantity[120, "Bytes"]]], 2 -> TestResultObject[
+         Association[
+         "TestClass" -> None, "TestIndex" -> 2, "TestID" -> 
+          "b802f82f-2ada-48bc-b9f6-6676407c2f13", "Outcome" -> "Success", 
+          "Input" -> HoldForm[
+            mutils`DropColumn[{{1, 2, 3}}, 2]], "ExpectedOutput" -> 
+          HoldForm[{{1, 3}}], "ActualOutput" -> HoldForm[{{1, 3}}], 
+          "ExpectedMessages" -> {}, "ActualMessages" -> {}, 
+          "AbsoluteTimeUsed" -> 
+          Quantity[0.000225`2.502697515943354, "Seconds"], "CPUTimeUsed" -> 
+          Quantity[0.00022300000000008424`, "Seconds"], "MemoryUsed" -> 
+          Quantity[232, "Bytes"]]]], "TestsSucceededIndices" -> {1, 2}, 
+     "TestsFailedIndices" -> {}, "TestsFailedWrongResultsIndices" -> {}, 
+     "TestsFailedWithMessagesIndices" -> {}, 
+     "TestsFailedWithErrorsIndices" -> {}]],
+   Editable->False,
+   SelectWithContents->True,
+   Selectable->False], "}"}]], "Output",
+ CellLabel->"Out[19]=",ExpressionUUID->"15ec2459-e63f-4172-af31-638203ab3014"]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"successFlag", "=", 
+   RowBox[{"SameQ", "[", 
+    RowBox[{
+     RowBox[{"Total", "[", 
+      RowBox[{"Map", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{
+          RowBox[{"TestReport", "[", "#", "]"}], "[", 
+          "\"\<TestsFailedCount\>\"", "]"}], "&"}], ",", 
+        RowBox[{"FileNames", "@", "\"\<~/Path_to_package/*.wlt\>\""}]}], 
+       "]"}], "]"}], ",", "0"}], "]"}]}], ";"}]], "Input",
+ CellLabel->"In[20]:=",ExpressionUUID->"5dcfd3c6-20c0-441d-966f-b237f46d9eac"]
+},
+WindowSize->{808, 756},
+WindowMargins->{{4, Automatic}, {Automatic, 4}},
+FrontEndVersion->"11.3 for Mac OS X x86 (32-bit, 64-bit Kernel) (March 5, \
+2018)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 255, 6, 52, "Input",ExpressionUUID->"068633c9-5c01-4b06-bb02-4454e7c5e514"],
+Cell[838, 30, 115, 0, 25, "Echo",ExpressionUUID->"518a26e6-69c3-4cd6-b23e-2eb9c9dfbdeb"],
+Cell[956, 32, 9264, 191, 132, "Output",ExpressionUUID->"15ec2459-e63f-4172-af31-638203ab3014"]
+}, Open  ]],
+Cell[10235, 226, 524, 14, 73, "Input",ExpressionUUID->"5dcfd3c6-20c0-441d-966f-b237f46d9eac"]
+}
+]
+*)
+
+(* End of internal cache information *)
+

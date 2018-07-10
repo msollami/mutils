@@ -4,11 +4,11 @@
 (* :Title: mutils *)
 (* :Author: Michael Sollami <msollami@gmail.com> *)
 (* :Context: mutils` *)
-(* :Version: 0.1.0 *)
-(* :Date: 2017-10-10 *)
+(* :Version: 1.0.0 *)
+(* :Date: 2018-07-10 *)
 
-(* :Mathematica Version: mutils` *)
-(* :Copyright: (c) 2017 Michael Sollami *)
+(* :Mathematica Version: 11.3 *)
+(* :Copyright: (c) 2018 Michael Sollami *)
 
 
 (* Abort for old, unsupported versions of Mathematica *)
@@ -18,178 +18,170 @@ If[$VersionNumber < 11,
 ]
 
 
-BeginPackage["mutils`", {"GeneralUtilities`", "MachineLearning`", "DatabaseLink`"}];
+BeginPackage["mutils`", {"GeneralUtilities`"}]; (* "MachineLearning`", "DatabaseLink`" *)
+
+
+
+(* ::Subsubsection:: *)
+
+(*Cells & Notebooks*)
+
+PrintMessage::usage = "PrintMessage[m] prints a message m to the console.";
+CaptionAbove::usage = "Execute CaptionAbove[cap] directly below the cell you want to caption with string cap.";
+SetDock::usage = "SetDock quickly sets up a docked cell in a notebook";	
+RemoveDock::usage = "RemoveDock[] removes any docked cell in the EvaluationNotebook";
 
 
 (* ::Subsection:: *)
-(*Paths*)
-
-
-(* ::Subsection:: *)
-(*Core Aliases*)
-
-
-(*TODO override Append/AppendTo to work on Bags*)
-Bag = Internal`Bag;
-Stuff = Internal`StuffBag;
-BagPart = Internal`BagPart;
-
-
-(* ::Subsection:: *)
-(*Net Aliases*)
-
-
-(* Neural Nets *)
-<<NeuralNetworks`;
-netLayers[net_] := NeuralNetworks`PackageScope`GetLayers[net]
-netLength[net_] := NeuralNetworks`PackageScope`GetLayers[net] // Length
-netPlot[net_] := NeuralNetworks`LayerDepedencyGraph @ net
-netVertices[net_] := Keys@Normal[net]["Vertices"]
-
-
-
-(* ::Subsection:: *)
-(*Initialization*)
-
-
-This::usage = "This[] is a shortcut for evaluation notebook";
-
+(*Convenience*)
 Backup::usage = "Backup[] creates a backup file of the EvaluationNotebook.
 Backup[f_] creates a backup file of the file f.";
-EditFile::usage = "Opens file in with app specified by $textEditorPath.";
-ShowInFinder::usage = "Shows file in finder.";
-ParentDir::usage = "Returns the parent directory of a file.";
-
-InitEdit::usage="initOpen[] shows the file returned by Init[] in the Finder.";
-InitFilename::usage="InitFilename[] returns the path of you init.m file for the evaluation kernel.";
-InitPrint::usage="initPrint[] prints the contents of the file returned by Init[].";
-InitOpen::usage="initOpen[] shows the file returned by InitFilename[] in the Finder.";
-InitRedirect::usage="initRedirect[newInitFilePath]";
-
 InstallShortcuts::usage="InstallShortcuts[] will install various shortcuts."
 UninstallShortcuts::usage="UninstallShortcuts[] will uninstall various shortcuts."
+LocalNames::usage="LocalNames[] prints a list of all existing LocalSymbols.";
 
+(*Submarined*)
+Warn::usage="Warn[w] prints a warning string w";
 
 
 (* ::Subsection:: *)
-(*Dynamic*)
+(* Data Manipulation *)
+
+DropColumn::usage="DropColumn[mat, n] returns mat with the nth column dropped.";
+TakeColumn::usage="TakeColumn[mat, n] returns the nth column.";
+
+(*Submarined*)
+nSubsets::usage="TODO";
+SafeTake::usage="SafeTake[list, n] safely takes n from list";
+SafeFirst::usage="SafeFirst[list] safely takes the first element";
 
 
-SystemInfo::usage = "SystemInfo[] launches a window to montior MMA's activity.";
+(* ::Subsection:: *)
+(*Dynamic Tools*)
 
-iDo::usage = "iDo[expr] evaluate expr, but creates a button that allows the argument to be reevaluated at will. The output will be replaced in-place.";
-iMap::usage = "iMap[f, list] maps function f over the given list dynamically, showing a temporary progress indicator.";
 iList::usage = "iList[list] shows a list with navigation buttons that presents only a partial span of the list at a time.";
+iMap::usage = "iMap[f, list] maps function f over the given list dynamically, showing a temporary progress indicator.";
 iScan::usage = "iScan[f, list] scans function f over a list dynamically, showing a temporary progress indicator.";
-niceButton;
-niceButton2;
+ListView::usage="ListView[expr] produces a dynamic graphic to explore parts of expr.";
 
-RemoveDynamic::usage = "Remove occurences of dynamic totally.";
-DynamicUtilitiesOn::usage = "Turn on the dynamic functionality in DynamicUtilities.";
-DynamicUtilitiesOff::usage = "Turn off the dynamic functionality in DynamicUtilities. Calls will fallback to a sensible static output.";
-
-
-(* ::Subsection:: *)
-(*Git*)
-
-
-GitStatus::usage="gitStatus[] returns info on the git repository in the current working Directory[].
-GitStatus[dir] returns info on the git repository located in dir.";
-
+(*Submarined*)
+SystemInfo::usage = "SystemInfo[] launches a window to montior MMA's activity.";
+iDo::usage = "iDo[expr] evaluate expr, but creates a button that allows the argument to be reevaluated at will. The output will be replaced in-place.";
 
 
 (* ::Subsection:: *)
-(*System Additions*)
-
-
-RandomString::usage="RandomString[s, n] creates a string of n characters by randomly sampling string s";
+(*Formatting*)
 
 HumanTime::usage = "HumanTime[seconds] takes an amount of time in seconds and returns a human readable form.";
 HumanSize::usage = "HumanSize[amount] formats a scalar amount into human readable form.";
 
-ListView::usage="ListView[expr] produces a dynamic graphic to explore parts of expr.";
-mmaFind::usage="mmaSearch[\"image_ext*\"] will find paths mma-related files matching e.g.
-\"/Applications/Mathematica.app/Contents/SystemFiles/Links/LibraryLink/LibraryResources/Source/image_external.c\"";
-
-LocalNames::usage="LocalNames[] prints a list of all existing LocalSymbols.";
-Warn::usage="Warn[w] prints a warning string w";
-ToSequence::usage="Shortcut for Sequence @@ l";
-ToAssociation::usage="ToAssociation[f_Function, keys_List] returns <| k->f[k], ...|>
-ToAssociation[keys_List, values_List] returns <| k->v, ...|>
-ToAssociation[{keys_List, values_List] returns <| k->f[k], ...|>";
-ToAssn::usage = "Shortcut for ToAssociation";
-
-joinTo::usage = "JoinTo[var, list] sets var to Join[var, list]";
-above::usage = "above[] returns the ToExpression of the contents in the cell above the execution cell";
-aboveCell::usage = "aboveCell[] returns the fullform of the cell above the execution cell";
-Size::usage = "Size[v] returns user friendly size information on a variable v.";
-
+(*Submarined*)
+InfoBox::usage="InfoBox[a] displays an association a in a formatted panel";
+FormatSeconds::usage = "FormatSeconds[s] takes a number of seconds s and returns a string in Hour : Minute : Second format";
+FormatInteger::usage = "FormatInteger[i] formats a large integer i into comma readable form.";
+Timer::usage = "Timer[t] creates a simple timing gui for t seconds.";
 
 
 (* ::Subsection:: *)
-(*Imaging *)
-
+(*Graphics & Images*)
 
 CSSColor::usage = "CssColor[c] of a color c returns the hex string of that color for use in css.";
-
-ToThumbnails::usage = "ToThumbnails[d1,d2,s] converts all the images in d1 to thumbnails of size s in d2."
-
-ShowBarcode::usage = "ShowBarcode[img, res] where res is the result of BarcodeRecognize[img]";
-ExportImages::usage = "ExportImages[path, imgs] exports the images to the path or zip.";
-DownloadImages::usage = "DownloadImages[urls, dir] downloads all the images in the list of urls into directory dir.";
-
-AbsoluteImageDimensions::usage = "AbsoluteImageDimensions";
-
-saveImages::usage = "TODO";
-features::usage = "TODO";
-showFeatures::usage = "TODO";
-importImages::usage = "TODO";
-size::usage = "TODO";
-downloadTweet::usage = "TODO";
-saveImageURL::usage = "saveImageURL[url, path] saves image at url to path, defaults to ~/Downloads";
 EXIF::usage = "EXIF[i] returns the EXIF annotations for an image i.";
-exportToSVG::usage = "TODO";
-exportToRotatingGif::usage = "TODO";
 ImageInfo::usage = "ImageInfo[i] prints a panel of information on image i.";
-randomImage::usage = "randomImage[] returns an random image from ExampleData[\"TestImage\"]
-randomImage[w, h] returns a random image with those dimensions";
+
+(*Submarined*)
+Zoom::usage = "Zoom[graphics] creates a pane wherein click and drag zooming is enabled.";
 lena::usage = "TODO";
-toURL::usage = "TODO";
-ShowInFinder::usage = "TODO";
-EditFile::usage = "TODO";
-
-
-(* ::Subsection:: *)
-(*Terminal *)
-
-
-ls::usage = "ls[dir] gives a list of filenames for files in the directory dir";
-pwd::usage = "TODO";
-ShellCell::usage = "ShellCell[] prints an interactive cell that executes shell commands.";
 
 
 (* ::Subsection:: *)
 (*Gui*)
 
-
 ToggleButton::usage = "ToggleButton[titles, actions] creates a cyclically toggling button that runs the corresponding action in the list when pressed.";
+Notify::usage = "Notify[title, text] creates a system level notification";
 
-Zoom::usage = "Zoom[graphics] creates a pane wherein click and drag zooming is enabled.";
-CaptionAbove::usage = "Execute CaptionAbove[cap] directly below the cell you want to caption with string cap.";
-Growl::usage = "notify[title, text] creates a growl notification";
-onValueChange::usage = "don't use this";
-assnBrowser::uages = "";
-assnMenu::usage = "assnMenu[func, assn] gives a dynamic popup menu of assn's values and displays fun(chosen key).";
+(*Submarined*)
+ShellCell::usage = "ShellCell[] prints an interactive cell that executes shell commands.";
+
+(* ::Subsection:: *)
+(*Machine Learning*)
+
+DownloadImages::usage = "DownloadImages[urls, dir] downloads all the images in the list of urls into directory dir.";
+TrainTestSplit::usage="TrainTestSplit[data, testRatio] returns {trainingData, testingData}.";
+
+(*<<NeuralNetorks`
+netLength := NeuralNetworks`PackageScope`GetLayers[net] // Length
+netPlot[net_] := NeuralNetworks`LayerDepedencyGraph @ net
+netVertices[net_] := Keys@Normal[net]["Vertices"]
+*)
+
+(* ::Subsection:: *)
+(*Strings*)
+
+StringHighlight::usage = "StringHighlight[str, pattern]]";
+RandomString::usage="RandomString[s, n] creates a string of n characters by randomly sampling string s";
+
+(*submarined*)
+SubstringQ::usage = "TODO";
+
+
+(* ::Subsection:: *)
+(*Syntax Sugar*)
+
+This::usage = "This[] is a shortcut for evaluation notebook";
+ToList::usage="ToList[expr] returns expr as a list";
+ToSequence::usage="Shortcut for Sequence @@ l";
+DropFrom::usage="DropFrom[s, n] mutates s with Drop.";
+InitFilename::usage="InitFilename[] returns the path of you init.m file for the evaluation kernel.";
+Size::usage = "Size[v] returns user friendly size information on a variable v.";
+
+
+(*submarined*)
+ToAssociation::usage="ToAssociation[f_Function, keys_List] returns <| k->f[k], ...|>
+ToAssociation[keys_List, values_List] returns <| k->v, ...|>
+ToAssociation[{keys_List, values_List] returns <| k->f[k], ...|>";
+ToAssn::usage = "Shortcut for ToAssociation";
+
+
+(* ::Subsection::Closed:: *)
+(*Writing*)
+
+Rhymes::usage = "Rhymes[w] returns a list of words that rhyme with w.";
+Synonyms::usage = "Synonyms[w] returns a list of words that are synonyms with w.";
+RhymesWithXSynonymWithY::usage = "RhymesWithXSynonymWithY[w,v] intersects Rhymes[w] and Synonyms[v]";
+
+(*submarined*)
+Antonyms::usage = "Antonyms[w] returns a list of words that are antonyms with w.";
 
 
 
-(* ::Subsubsection:: *)
-(*Buttons*)
 
 
-PrintMessage::usage = "PrintMessage[m] prints a message m to the console.";
-SetDock::usage = "SetDock quickly sets up a docked cell in a notebook";	
-RemoveDock::usage = "RemoveDock[] removes any docked cell in the EvaluationNotebook";
+
+
+
+
+
+Begin["Private`"];
+
+
+
+(* Undocumented *)
+
+part::usage="Operator form for Part[], e.g. part[spec] @ list works"
+raggedTranspose::usage="TODO";
+reverseAssn::usage="TODO";
+
+
+valueChart::usage="Todo";
+valueTable::usage="TODO";
+gridPartition::usage = "TODO";
+fancy::usage = "TODO";
+percent::usage = "TODO";
+sentence::usage = "TODO";
+prettyRule::usage = "format rules ";
+intervalFormat::usage = "TODO";
+
 
 startStopButton::usage = "TODO";
 qaButton::usage = "TODO";
@@ -202,32 +194,84 @@ getNextDingbat::usage = "TODO";
 setDingbat::usage = "TODO";
 buttonDock::usage = "TODO";
 qaDock::usage = "TODO";
-
 SetDingbat::usage = "TODO";
 
+niceButton;
+niceButton2;
 
-(* ::Subsection:: *)
-(*Strings*)
+RemoveDynamic::usage = "Remove occurences of dynamic totally.";
+DynamicUtilitiesOn::usage = "Turn on the dynamic functionality in DynamicUtilities.";
+DynamicUtilitiesOff::usage = "Turn off the dynamic functionality in DynamicUtilities. Calls will fallback to a sensible static output.";
 
 
-(* String Functions *)
+ToThumbnails::usage = "ToThumbnails[d1,d2,s] converts all the images in d1 to thumbnails of size s in d2."
+ShowBarcode::usage = "ShowBarcode[img, res] where res is the result of BarcodeRecognize[img]";
+ExportImages::usage = "ExportImages[path, imgs] exports the images to the path or zip.";
+AbsoluteImageDimensions::usage = "AbsoluteImageDimensions";
+saveImages::usage = "TODO";
+features::usage = "TODO";
+showFeatures::usage = "TODO";
+importImages::usage = "TODO";
+size::usage = "TODO";
+downloadTweet::usage = "TODO";
+saveImageURL::usage = "saveImageURL[url, path] saves image at url to path, defaults to ~/Downloads";
+
+exportToSVG::usage = "TODO";
+exportToRotatingGif::usage = "TODO";
+
+randomImage::usage = "randomImage[] returns an random image from ExampleData[\"TestImage\"]
+randomImage[w, h] returns a random image with those dimensions";
+
+toURL::usage = "TODO";
+ShowInFinder::usage = "TODO";
+EditFile::usage = "TODO";
+
+onValueChange::usage = "don't use this";
+assnBrowser::uages = "";
+assnMenu::usage = "assnMenu[func, assn] gives a dynamic popup menu of assn's values and displays fun(chosen key).";
+
+
 parse::usage = "TODO";
 characterCount::usage = "TODO";
 deDotString::usage = "deDotString helps ";
-deNullString::usage = "TODO";
-StringHighlight::usage = "StringHighlight[str, pattern]]";
-SubstringQ::usage = "TODO";
-mark::usage = "TODO";
+ParentDir::usage = "Returns the parent directory of a file.";
+
+InitEdit::usage="initOpen[] shows the file returned by Init[] in the Finder.";
+InitPrint::usage="initPrint[] prints the contents of the file returned by Init[].";
+InitOpen::usage="initOpen[] shows the file returned by InitFilename[] in the Finder.";
+InitRedirect::usage="initRedirect[newInitFilePath]";
+
+
+(*TODO override Append/AppendTo to work on Bags*)
+Bag = Internal`Bag;
+Stuff = Internal`StuffBag;
+BagPart = Internal`BagPart;
+
+
+GitStatus::usage="gitStatus[] returns info on the git repository in the current working Directory[].
+GitStatus[dir] returns info on the git repository located in dir.";
+
+
+mmaFind::usage="mmaSearch[\"image_ext*\"] will find paths mma-related files matching e.g.
+\"/Applications/Mathematica.app/Contents/SystemFiles/Links/LibraryLink/LibraryResources/Source/image_external.c\"";
+
+joinTo::usage = "JoinTo[var, list] sets var to Join[var, list]";
+above::usage = "above[] returns the ToExpression of the contents in the cell above the execution cell";
+aboveCell::usage = "aboveCell[] returns the fullform of the cell above the execution cell";
+
+
+(* ::Subsection:: *)
+(*Terminal *)
+
+ls::usage = "ls[dir] gives a list of filenames for files in the directory dir";
+pwd::usage = "TODO";
+
+
 
 
 (* ::Subsection:: *)
 (*Dates & Times*)
 
-
-(* Time & Date *)
-FormatSeconds::usage = "FormatSeconds[s] takes a number of seconds s and returns a string in Hour : Minute : Second format";
-FormatInteger::usage = "FormatInteger[i] formats a large integer i into comma readable form.";
-Timer::usage = "Timer[t] creates a simple timing gui for t seconds.";
 
 dateConversionRules::usage = "TODO";
 FromUnixDate::usage = "TODO";
@@ -247,54 +291,10 @@ clock40::usage = "TODO";
 (* ::Subsection:: *)
 (*Machine Learning*)
 
-
 $MLModelTypes;
-TrainTestSplit::usage="TrainTestSplit[data, testRatio] returns {trainingData, testingData}.";
-Train::usage="Train[data, testRatio] returns a list of measurments for easch model type."
-
-
+Train::usage="Train[data, testRatio] returns a list of measurments for each model type."
 
 (* ::Subsection:: *)
-(*List & Associations*)
-
-
-(* List Functions *)
-
-ToList::usage="ToList[expr] returns expr as a list";
-DropColumn::usage="DropColumn[mat, n] returns mat with the nth column dropped.";
-TakeColumn::usage="TakeColumn[mat, n] returns the nth column.";
-
-part::usage="Operator form for Part[], e.g. part[spec] @ list works"
-
-raggedTranspose::usage="TODO";
-DropFrom::usage="DropFrom[s, n] mutates s with Drop.";
-nSubsets::usage="TODO";
-SafeTake::usage="SafeTake[list, n] safely takes n from list";
-SafeFirst::usage="SafeFirst[list] safely takes the first element";
-
-(* Assn Functions *)
-
-InfoBox::usage="InfoBox[a] displays an association a in a formatted panel";
-reverseAssn::usage="TODO";
-
-
-(* ::Subsection:: *)
-(*Formatting & Stats*)
-
-
-valueChart::usage="Todo";
-valueTable::usage="TODO";
-
-
-(* Formatting *)
-gridPartition::usage = "TODO";
-fancy::usage = "TODO";
-percent::usage = "TODO";
-sentence::usage = "TODO";
-prettyRule::usage = "format rules ";
-intervalFormat::usage = "TODO";
-
-
 (* Stats *)
 GrangerCausalityTest::usage = "TODO";
 table::usage = "TODO";
@@ -315,16 +315,6 @@ statGrid::usage = "TODO";
 RandomData::usage = "TODO";
 
 
-(* ::Subsection::Closed:: *)
-(*Writing*)
-
-
-Synonyms::usage = "Synonyms[w] returns a list of words that are synonyms with w.";
-Antonyms::usage = "Antonyms[w] returns a list of words that are antonyms with w.";
-Rhymes::usage = "Rhymes[w] returns a list of words that rhyme with w.";
-RhymesWithXSynonymWithY::usage = "RhymesWithXSynonymWithY[w,v] intersects Rhymes[w] and Synonyms[v]";
-
-
 (* ::Subsection:: *)
 (*Authoring Tools*)
 
@@ -335,11 +325,13 @@ OpenTool::usage="TODO";
 outline::usage="TODO";
 
 
+
+
+
+
+
 (* ::Section:: *)
 (*Definitions*)
-
-
-Begin["Private`"];
 
 
 (* ::Subsection:: *)
@@ -366,6 +358,8 @@ InitRedirect[d_?DirectoryQ] := (
 $pacname = ParentDir[$InputFileName];
 
 (* TODO make this work with Windows and Linux *) 
+InstallShortcuts[] := (Warn["Unsupported on Window and Linux"]; $Failed) /; $OperatingSystem =!= "MacOSX"
+
 InstallShortcuts[] := Module[{customKeyFile, keyFile, backupKeyFile},
 	customKeyFile = FileNameJoin[{$pacname, "KeyEventTranslations.tr"}];
 	keyFile = FileNameJoin[{$InstallationDirectory, 
@@ -381,7 +375,9 @@ InstallShortcuts[] := Module[{customKeyFile, keyFile, backupKeyFile},
 	CopyFile[customKeyFile, keyFile, OverwriteTarget -> True];
 	
 	Print["Key shortcuts installed.\nPlease restart Mathematica to complete installation..."]	
-]
+] 
+
+UninstallShortcuts[] := (Warn["Unsupported on Window and Linux"]; $Failed) /; $OperatingSystem =!= "MacOSX"
 
 UninstallShortcuts[] := Module[{backupKeyFile, keyFile},
 	
@@ -1142,14 +1138,10 @@ assnBrowser[assn_] := With[{bn=assn}, DynamicModule[{input="", res={}, y="tench"
 ]]
 
 
-Growl[txt_: "ping", subtext_: ""] :=
-    Module[{process, cmd}, process = StartProcess["/bin/bash"];
-           cmd = "growlnotify -m '" <> subtext <> "'" <>
-           " -a \"Mathematica\"" <> " -n \"" <> txt <> "\"";
-           WriteLine[process, cmd];
-           Pause[.1];
-           KillProcess[process]
-]
+Clear[Notify]
+Notify[h_, b_] := (Warn["Unsupported on Window and Linux"]; $Failed)  /; $OperatingSystem =!= "MacOSX"
+Notify[header_: "...", body_: "ping"] :=  RunProcess[{"osascript", "-e", 
+  Echo @ StringForm["display notification \"``\" with title \"``\"", body, header]}]
 
 
 onValueChange[a_,f_] := Module[{},
